@@ -22,7 +22,7 @@
         <div>
             <div>
                 <fieldset>
-                    <form action="./createuser.php" method="post">
+                    <form action="./login/createuser.php" method="post">
                         <h2>Novo Usuário</h2>
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" placeholder="Nome"><br>
@@ -38,7 +38,7 @@
             </div>
             <div>
                 <fieldset>
-                    <form action="./login.php" method="post">
+                    <form action="./login/login.php" method="post">
                         <h2>Login</h2>
                         <label for="login">Login</label>
                         <input type="text" name="login" id="login" placeholder="Nome de Usuário"><br>
@@ -51,10 +51,12 @@
         </div>
         
     </main>
+    
 </body>
 
 </html>
 
 <?php
-
+session_start();
+echo $_SESSION['mensagem'];
 ?>

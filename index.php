@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameIfes</title>
+    <title>GameIfes - Entrar</title>
 </head>
 
 <body>
@@ -22,16 +22,15 @@
         <div>
             <div>
                 <fieldset>
+                    <!-- TODO: Mover criação de usuário para função de adimim -->
                     <form action="./login/createuser.php" method="post">
                         <h2>Novo Usuário</h2>
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" placeholder="Nome"><br>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Email"><br>
+                        <input type="text" name="nome" id="nome" placeholder="Nome" required ><br>
                         <label for="login">Login</label>
-                        <input type="text" name="login" id="login" placeholder="Nome De Usuário"><br>
+                        <input type="text" name="login" id="login" placeholder="Nome De Usuário" required ><br>
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha" placeholder="Senha"><br>
+                        <input type="password" name="senha" id="senha" placeholder="Senha" required ><br>
                         <input type="submit" value="Cadastrar" name="btn-cadastrar"><br><br>
                     </form>
                 </fieldset>
@@ -41,9 +40,9 @@
                     <form action="./login/login.php" method="post">
                         <h2>Login</h2>
                         <label for="login">Login</label>
-                        <input type="text" name="login" id="login" placeholder="Nome de Usuário"><br>
+                        <input type="text" name="login" id="login" placeholder="Nome de Usuário" required ><br>
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha" placeholder="Senha"><br>
+                        <input type="password" name="senha" id="senha" placeholder="Senha" required ><br>
                         <input type="submit" value="Entrar" name="btn-login"><br><br>
                     </form>
                 </fieldset>

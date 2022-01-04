@@ -3,7 +3,6 @@ session_start();
 require_once '../includes/db_connection.php';
 if(isset($_POST['btn-cadastrar'])){
     $nome = mysqli_escape_string($connect, $_POST['nome']);
-    $email =  mysqli_escape_string($connect, $_POST['email']);
     $login =  mysqli_escape_string($connect, $_POST['login']);
     $senha =  mysqli_escape_string($connect, $_POST['senha']);
 

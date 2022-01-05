@@ -17,7 +17,7 @@
         <div>
             <nav>
             <a href="#">Home</a>
-            <a href="">Gerenciar Atividades</a>
+            <a href="./manager/managerwork.php">Gerenciar Atividades</a>
             <a href="./manager/managerworklevel.php">Gerenciar Nível De Atividades</a>
             <a href="./manager/managerworkcategory.php">Gerenciar Categoria Atividades</a>
             <a href="">Gerenciar Tabuleiros</a>

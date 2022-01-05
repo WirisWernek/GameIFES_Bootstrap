@@ -9,7 +9,7 @@
 <body>
     
         <?php
-        require_once '../../includes/list.php';
+        require_once '../../../includes/list.php';
         listlevel();
         ?>
 

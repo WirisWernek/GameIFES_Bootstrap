@@ -7,9 +7,9 @@
     <title>Listar Nível Atividade</title>
 </head>
 <body>
-    <form action="../../includes/update.php" method="post">
+    <form action="../../../includes/update.php" method="post">
         <?php
-        require_once '../../includes/db_connection.php';
+        require_once '../../../includes/db_connection.php';
         $id = $_GET['id'];
         $sql = "SELECT * FROM categoriaatividade WHERE idcategoriaAtividade = $id";
         $resultado = mysqli_query($connect, $sql);

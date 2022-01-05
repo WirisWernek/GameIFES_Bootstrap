@@ -7,8 +7,8 @@
     <title>Gerenciar Nível Atividade</title>
 </head>
 <body>
-        <a href="./registerworklevel.php">Cadastrar Novo Nível</a>
+        <a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
         <br>
-        <a href="./listworklevel.php">Listar/Editar/Excluir</a>
+        <a href="../list/listworklevel.php">Listar/Editar/Excluir</a>
 </body>
 </html>

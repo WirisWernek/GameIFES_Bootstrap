@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Home</title>
 </head>
 <body>
@@ -18,8 +18,8 @@
             <nav>
             <a href="#">Home</a>
             <a href="">Gerenciar Atividades</a>
-            <a href="./managerworklevel.php">Gerenciar Nível De Atividades</a>
-            <a href="./managerworkcategory.php">Gerenciar Categoria Atividades</a>
+            <a href="./manager/managerworklevel.php">Gerenciar Nível De Atividades</a>
+            <a href="./manager/managerworkcategory.php">Gerenciar Categoria Atividades</a>
             <a href="">Gerenciar Tabuleiros</a>
             
             </nav>

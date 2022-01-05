@@ -7,13 +7,11 @@
     <title>Registrar Nível Atividade</title>
 </head>
 <body>
-    <form action="../../includes/create.php" method="post">
+    <form action="../../../includes/create.php" method="post">
         <input type="hidden" name="opcao" value="criarCategoria">
         <label for="descricao">Descrição: </label>
         <input type="text" name="descricao" id="descricao">
-
         <input type="submit" value="Cadastrar">
-
     </form>
 </body>
 </html>

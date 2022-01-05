@@ -14,22 +14,22 @@ if(isset($_POST['btn-login'])){
             switch($dados['perfilUsuarioID']){
                 case '1':
                     $_SESSION['id'] = $dados['idusuario'];
-                    $_SESSION['nome'] = $dados['nome'];
-                    $_SESSION['tipo'] = $dados['tipo'];
+                    $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
+                    $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
                     header('Location: ../users/admin/index.php');
                     break;
                 case '2':
                     $_SESSION['id'] = $dados['idusuario'];
-                    $_SESSION['nome'] = $dados['nome'];
-                    $_SESSION['tipo'] = $dados['tipo'];
+                    $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
+                    $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
                     header('Location: ../users/user/home/index.php');
                     break;
                 case '3':
                     $_SESSION['id'] = $dados['idusuario'];
-                    $_SESSION['nome'] = $dados['nome'];
-                    $_SESSION['tipo'] = $dados['tipo'];
+                    $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
+                    $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
                     header('Location: ../users/teacher/index.php');
                     break;

@@ -32,4 +32,25 @@
             echo '</form>';
         }
     }
+
+    function listwork(){
+        require_once '../../../includes/db_connection.php';
+        $sql = "SELECT * FROM atividade";
+        $resultado = mysqli_query($connect, $sql);
+        while($dados = mysqli_fetch_assoc($resultado)){   
+            echo '<form action="../../../includes/delete.php" method="post">';
+            echo '<input type="hidden" name="opcao" value="deletarAtividade">';
+            echo '<input type="hidden" name="id" value="' . $dados['idatividade'] . '">';
+            echo '<label for="descricao">Descrição: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricacao'] . '" disabled>';
+            echo '<label for="descricao">Descrição: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['categoriaatividadeid'] . '" disabled>';
+            echo '<label for="descricao">Descrição: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['nivelatividadeid'] . '" disabled>';
+            echo '<a href="../update/updateworklevel.php?id='. $dados['idatividade'] . '" >Editar</a>';
+            echo '<button type="submit" >Excuir</button>';
+            echo '<br>';
+            echo '</form>';
+        }
+    }
 ?>

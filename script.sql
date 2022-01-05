@@ -1,3 +1,6 @@
+-- -----------------------------------------------------
+-- Table `softedu`.`usuario`
+-- -----------------------------------------------------
 DROP TABLE IF EXISTS `softedu`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `softedu`.`usuario` (
@@ -16,6 +19,10 @@ CREATE UNIQUE INDEX `login_UNIQUE` ON `softedu`.`usuario` (`login` ASC)  COMMENT
 
 CREATE INDEX `idPerfilUsuario_idx` ON `softedu`.`usuario` (`perfilUsuarioID` ASC)  COMMENT '';
 
+
+-- -----------------------------------------------------
+-- Table `softedu`.`categoriaatividade`
+-- -----------------------------------------------------
 DROP TABLE IF EXISTS `softedu`.`categoriaatividade` ;
 
 CREATE TABLE IF NOT EXISTS `softedu`.`categoriaatividade` (
@@ -26,6 +33,9 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `softedu`.`nivelatividade`
+-- -----------------------------------------------------
 DROP TABLE IF EXISTS `softedu`.`nivelatividade` ;
 
 CREATE TABLE IF NOT EXISTS `softedu`.`nivelatividade` (
@@ -34,3 +44,20 @@ CREATE TABLE IF NOT EXISTS `softedu`.`nivelatividade` (
   PRIMARY KEY (`idnivelAtividade`)  COMMENT '')
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `softedu`.`atividade`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`atividade` ;
+
+CREATE TABLE IF NOT EXISTS `softedu`.`atividade` (
+  `idatividade` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricacao` VARCHAR(100) NOT NULL COMMENT '',
+  `categoriaatividadeid` INT NOT NULL COMMENT '',
+  `nivelatividadeid` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idatividade`)  COMMENT '')
+ENGINE = InnoDB;
+
+CREATE INDEX `atividade_categoriaatividadeid_idx` ON `softedu`.`atividade` (`categoriaatividadeid` ASC)  COMMENT '';
+
+CREATE INDEX `atividade_nivelatividade_idx` ON `softedu`.`atividade` (`nivelatividadeid` ASC)  COMMENT '';

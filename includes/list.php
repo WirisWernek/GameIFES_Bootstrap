@@ -7,7 +7,7 @@
             echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
-            echo '<a href="" >Editar</a>';
+            echo '<a href="./updateworkcategory.php?id='. $dados['idcategoriaAtividade'] . '" >Editar</a>';
             echo '<a href="" >Excluir</a>';
             echo '<br>';
         } 
@@ -22,7 +22,7 @@
             echo '<input type="hidden" name="id" value="' . $dados['idnivelAtividade'] . '">';
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricaoNivel'] . '" disabled>';
-            echo '<a href="" >Editar</a>';
+            echo '<a href="./updateworklevel.php?id='. $dados['idnivelAtividade'] . '" >Editar</a>';
             echo '<a href="" >Excluir</a>';
             echo '<br>';
         }

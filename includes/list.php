@@ -47,7 +47,7 @@
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['categoriaatividadeid'] . '" disabled>';
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['nivelatividadeid'] . '" disabled>';
-            echo '<a href="../update/updateworklevel.php?id='. $dados['idatividade'] . '" >Editar</a>';
+            echo '<a href="../update/updatework.php?id='. $dados['idatividade'] . '" >Editar</a>';
             echo '<button type="submit" >Excuir</button>';
             echo '<br>';
             echo '</form>';

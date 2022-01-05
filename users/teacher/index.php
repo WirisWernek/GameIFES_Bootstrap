@@ -20,6 +20,8 @@
             <a href="">Gerenciar Atividades</a>
             <a href="./registerworklevel.php">Gerenciar Nível De Atividades</a>
             <a href="./registerworkcategory.php">Gerenciar Categoria Atividades</a>
+            <a href="./listworklevel.php">Listar Nível De Atividades</a>
+            <a href="./listworkcategory.php">Listar Categoria Atividades</a>
             <a href="">Gerenciar Tabuleiros</a>
             
             </nav>

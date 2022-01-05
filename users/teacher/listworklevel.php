@@ -7,11 +7,11 @@
     <title>Listar Nível Atividade</title>
 </head>
 <body>
-    <form action="" method="post">
+    
         <?php
         require_once '../../includes/list.php';
         listlevel();
         ?>
-    </form>
+
 </body>
 </html>

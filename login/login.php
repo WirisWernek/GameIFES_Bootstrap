@@ -9,7 +9,6 @@ if(isset($_POST['btn-login'])){
 
     if($resultado = mysqli_query($connect, $sql)){
         if(mysqli_num_rows($resultado) > 0){
-            // $resultado = mysqli_query($connect, $sql);
             $dados = mysqli_fetch_assoc($resultado);
             switch($dados['perfilUsuarioID']){
                 case '1':

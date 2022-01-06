@@ -66,6 +66,23 @@
         }
     }
 
+    function registerboard(){
+        require_once './db_connection.php';
+        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
+        $planta = mysqli_escape_string($connect, $_POST['planta']);
+    
+        $sql = "INSERT INTO tabuleiro(descricao, plantaTabuleiro, dataCriacao) VALUES('$descricao', '$planta', now());";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            header('Location: ../users/teacher/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
+        }
+    }
+
     switch($_POST['opcao']){
         case 'criarNivel':
             registerworklevel();
@@ -78,6 +95,9 @@
             break;
         case 'criarUsuario':
             registeruser();
+            break;
+        case 'criarTabuleiro':
+            registerboard();
             break;
         default:
         echo "Não foi possível realizar a operação!";

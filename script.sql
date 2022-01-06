@@ -75,5 +75,21 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
-
 INSERT INTO perfilusuario(descricao) VALUES("Adiministrador"),("Professor"),("Aluno");
+
+-- -----------------------------------------------------
+-- Table `softedu`.`tabuleiro`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`tabuleiro` ;
+
+CREATE TABLE IF NOT EXISTS `softedu`.`tabuleiro` (
+  `idtabuleiro` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `plantaTabuleiro` VARCHAR(1000) NULL DEFAULT NULL COMMENT '',
+  `descricao` VARCHAR(50) NOT NULL COMMENT '',
+  `dataCriacao` DATE NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`idtabuleiro`)  COMMENT '')
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
+
+

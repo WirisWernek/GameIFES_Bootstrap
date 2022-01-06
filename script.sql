@@ -61,3 +61,22 @@ ENGINE = InnoDB;
 CREATE INDEX `atividade_categoriaatividadeid_idx` ON `softedu`.`atividade` (`categoriaatividadeid` ASC)  COMMENT '';
 
 CREATE INDEX `atividade_nivelatividade_idx` ON `softedu`.`atividade` (`nivelatividadeid` ASC)  COMMENT '';
+
+-- -----------------------------------------------------
+-- Table `softedu`.`perfilusuario`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`perfilusuario` ;
+
+CREATE TABLE IF NOT EXISTS `softedu`.`perfilusuario` (
+  `idPerfilUsuario` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idPerfilUsuario`)  COMMENT '')
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
+
+
+insert into perfilusuario(descricao) values
+("Adiministrador"),
+("Professor"),
+("Aluno");

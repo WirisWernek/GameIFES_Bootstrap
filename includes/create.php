@@ -45,6 +45,24 @@
         }
     }
 
+    function registeruser(){
+        require_once './db_connection.php';
+        $nome = mysqli_escape_string($connect, $_POST['nome']);
+        $login =  mysqli_escape_string($connect, $_POST['login']);
+        $senha =  mysqli_escape_string($connect, $_POST['senha']);
+        $perfilusuario =  intval(mysqli_escape_string($connect, $_POST['perfilusuario']));
+    
+        $sql = "INSERT INTO usuario(nomeCompletoUsuario, senha, `login`, dataCadastro, perfilUsuarioID) VALUES('$nome', '$senha', '$login', now(), '$perfilusuario');";
+    
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            header('Location: ../index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            header('Location: ../index.php');
+        }
+    }
+
     switch($_POST['opcao']){
         case 'criarNivel':
             registerworklevel();
@@ -54,6 +72,9 @@
             break;
         case 'criarAtividade':
             registerwork();
+            break;
+        case 'criarUsuario':
+            registeruser();
             break;
         default:
         echo "Não foi possível realizar a operação!";

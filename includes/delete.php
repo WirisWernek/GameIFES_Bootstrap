@@ -45,6 +45,21 @@
         }
     }
 
+    function deleteuser(){
+        require_once './db_connection.php';
+        $id = mysqli_escape_string($connect, $_POST['id']);
+        $sql = "DELETE FROM usuario WHERE idusuario = '$id';";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Deletado com sucesso!";
+            header('Location: ../users/admin/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao deletar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/admin/index.php');
+        }
+    }
+
     switch($_POST['opcao']){
         case 'deletarNivel':
             deleteworklevel();
@@ -54,6 +69,9 @@
             break;
         case 'deletarAtividade':
             deletework();
+            break;
+        case 'deletarUsuario':
+            deleteuser();
             break;
         default:
         echo "Não foi possível realizar a operação!";

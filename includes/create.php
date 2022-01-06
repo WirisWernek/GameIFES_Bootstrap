@@ -10,7 +10,8 @@
             header('Location: ../users/teacher/index.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            header('Location: ../users/teacher/index.php');
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
         }
     }
     
@@ -24,7 +25,8 @@
             header('Location: ../users/teacher/index.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            header('Location: ../users/teacher/index.php');
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
         }
     }
 
@@ -56,10 +58,11 @@
     
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
-            header('Location: ../index.php');
+            header('Location: ../users/admin/index.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            header('Location: ../index.php');
+            echo mysqli_error($connect);
+            // header('Location: ../users/admin/index.php');
         }
     }
 

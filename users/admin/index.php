@@ -1,3 +1,10 @@
+<?php
+// session_start();
+// if($_SESSION['tipo'] != '1'){
+//     header('Location: ../../../index.php');
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>Home</title>
+    <title>Adiministrção</title>
 </head>
 <body>
     <header>
@@ -13,8 +20,7 @@
             <nav>
             <a href="#">Home</a>
             <a href="./manager/manageruser.php">Gerenciar Usuários</a>
-            <a href="./manager/manageruserprofile.php">Gerenciar Perfil De Usuário</a>
-            <a href="./manager/managerworkcategory.php">Gerenciar Categoria Atividades</a>
+        
             <a href="">Gerenciar Tabuleiros</a>
             </nav>
         </div>

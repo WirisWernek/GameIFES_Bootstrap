@@ -76,7 +76,4 @@ AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
-insert into perfilusuario(descricao) values
-("Adiministrador"),
-("Professor"),
-("Aluno");
+INSERT INTO perfilusuario(descricao) VALUES("Adiministrador"),("Professor"),("Aluno");

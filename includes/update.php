@@ -7,10 +7,10 @@
         $sql = "UPDATE nivelatividade SET descricaoNivel='$descricao' WHERE idnivelAtividade = '$id';";
 
         if(mysqli_query($connect, $sql)){
-            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/index.php');
         }else{
-            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            $_SESSION['mensagem']= "Erro ao atualizar!";
             header('Location: ../users/teacher/index.php');
         }
     }
@@ -22,10 +22,10 @@
         $sql = "UPDATE categoriaatividade SET descricao='$descricao' WHERE idcategoriaAtividade = '$id';";
 
         if(mysqli_query($connect, $sql)){
-            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/index.php');
         }else{
-            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            $_SESSION['mensagem']= "Erro ao atualizar!";
             header('Location: ../users/teacher/index.php');
         }
     }
@@ -39,12 +39,31 @@
         $sql = "UPDATE atividade SET descricacao='$descricao', categoriaatividadeid='$categoria', nivelatividadeid='$nivel' WHERE idatividade = '$id';";
 
         if(mysqli_query($connect, $sql)){
-            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/index.php');
         }else{
-            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
             // header('Location: ../users/teacher/index.php');
+        }
+    }
+    
+    function updateuser(){
+        require_once './db_connection.php';
+        $id = mysqli_escape_string($connect, $_POST['id']);
+        $nome = mysqli_escape_string($connect, $_POST['nome']);
+        $login = mysqli_escape_string($connect, $_POST['login']);
+        $senha = mysqli_escape_string($connect, $_POST['senha']);
+        $perfilusuario = intval(mysqli_escape_string($connect, $_POST['perfilusuario']));
+        $sql = "UPDATE usuario SET nomeCompletoUsuario='$nome', `login`='$login', senha='$senha',perfilUsuarioID='$perfilusuario'  WHERE idusuario = '$id';";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Atualizado com sucesso!";
+            header('Location: ../users/admin/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao atualizar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/admin/index.php');
         }
     }
 
@@ -57,6 +76,9 @@
             break;
         case 'atualizarAtividade':
             updatework();
+            break;
+        case 'atualizarUsuario':
+            updateuser();
             break;
         default:
         echo "Não foi possível realizar a operação!";

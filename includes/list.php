@@ -10,7 +10,7 @@
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
             echo '<a href="../update/updateworkcategory.php?id='. $dados['idcategoriaAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excuir</button>';
+            echo '<button type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         } 
@@ -27,7 +27,7 @@
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricaoNivel'] . '" disabled>';
             echo '<a href="../update/updateworklevel.php?id='. $dados['idnivelAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excuir</button>';
+            echo '<button type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }
@@ -48,7 +48,7 @@
             echo '<label for="descricao">Descrição: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['nivelatividadeid'] . '" disabled>';
             echo '<a href="../update/updatework.php?id='. $dados['idatividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excuir</button>';
+            echo '<button type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }
@@ -82,7 +82,7 @@
                 echo "<td>" . $data->format('d/m/Y') . "</td>";
                 echo '<td>' . $dados['perfilUsuarioID'] . '</td>';
                 echo '<td><a href="../update/updateuser.php?id='. $dados['idusuario'] . '" >Editar</a>';
-                echo '<td><button type="submit" >Excuir</button>';
+                echo '<td><button type="submit" >Excluir</button>';
                 echo '</form>';
                 echo '</tr>';
             }
@@ -106,8 +106,8 @@
             echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
             echo '<label for="descricao">Data de Criação: </label>';
             echo '<input type="text" name="descricao" id="descricao" value="' . $data->format('d/m/Y') . '" disabled>';
-            echo '<a href="../update/updatework.php?id='. $dados['idtabuleiro'] . '" >Editar</a>';
-            echo '<button type="submit" >Excuir</button>';
+            echo '<a href="../update/updateboard.php?id='. $dados['idtabuleiro'] . '" >Editar</a>';
+            echo '<button type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }

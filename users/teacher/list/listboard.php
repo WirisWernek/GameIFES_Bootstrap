@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Tabuleiros</title>
+    <title>Listar Tabuleiros</title>
 </head>
 <body>
-        <a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
-        <br>
-        <a href="../list/listboard.php">Listar/Editar/Excluir</a>
+        <?php
+        require_once '../../../includes/list.php';
+        listboard();
+        ?>
 </body>
 </html>

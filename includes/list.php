@@ -90,4 +90,26 @@
         </table>';
         
     }
+
+    function listboard(){
+        require_once '../../../includes/db_connection.php';
+        $sql = "SELECT * FROM tabuleiro";
+        $resultado = mysqli_query($connect, $sql);
+        while($dados = mysqli_fetch_assoc($resultado)){
+            $data = new DateTime($dados['dataCriacao']);  
+            echo '<form action="../../../includes/delete.php" method="post">';
+            echo '<input type="hidden" name="opcao" value="deletarTabuleiro">';
+            echo '<input type="hidden" name="id" value="' . $dados['idtabuleiro'] . '">';
+            echo '<label for="descricao">Planta do Tabuleiro: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['plantaTabuleiro'] . '" disabled>';
+            echo '<label for="descricao">Descrição: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
+            echo '<label for="descricao">Data de Criação: </label>';
+            echo '<input type="text" name="descricao" id="descricao" value="' . $data->format('d/m/Y') . '" disabled>';
+            echo '<a href="../update/updatework.php?id='. $dados['idtabuleiro'] . '" >Editar</a>';
+            echo '<button type="submit" >Excuir</button>';
+            echo '<br>';
+            echo '</form>';
+        }
+    }
 ?>

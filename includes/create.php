@@ -82,6 +82,24 @@
             // header('Location: ../users/teacher/index.php');
         }
     }
+    function initializework(){
+        require_once './db_connection.php';
+        $idusuario = intval(mysqli_escape_string($connect, $_POST['idUsuario']));
+        $idatividade = intval(mysqli_escape_string($connect, $_POST['idAtividade']));
+        $tabuleiro = intval(mysqli_escape_string($connect, $_POST['tabuleiro']));
+        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
+    
+        $sql = "INSERT INTO atividade_aluno(descricaoatividade, tabuleiroid, usuarioid, `status`, datainicio, datafim, atividadeid) VALUES('$descricao', '$tabuleiro','$idusuario', 'Iniciado', now() , now() , '$idatividade');";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            header('Location: ../users/teacher/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
+        }
+    }
 
     switch($_POST['opcao']){
         case 'criarNivel':
@@ -98,6 +116,9 @@
             break;
         case 'criarTabuleiro':
             registerboard();
+            break;
+        case 'iniciarAtividade':
+            initializework();
             break;
         default:
         echo "Não foi possível realizar a operação!";

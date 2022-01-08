@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>Adiministrção</title>
+    <title>Administração</title>
 </head>
 <body>
     <header>
@@ -20,11 +20,8 @@
             <nav>
             <a href="#">Home</a>
             <a href="./manager/manageruser.php">Gerenciar Usuários</a>
-        
-            <a href="">Gerenciar Tabuleiros</a>
             </nav>
-        </div>
-        
+        </div> 
     </header>
     <main>
         <p>

@@ -1,0 +1,20 @@
+body{
+    background-image: linear-gradient(#792b2b, black);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+fieldset{
+    background-color: brown;
+    color: rgb(236, 236, 236);
+    border-color: transparent;
+    border-radius: 5px;
+    max-width: 300px;
+    min-height: 40vh;
+    padding: 2rem;
+    box-shadow: 5px 5px 8px rgb(73, 18, 18);
+}

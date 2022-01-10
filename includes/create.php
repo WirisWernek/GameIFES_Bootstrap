@@ -88,9 +88,9 @@
         $idatividade = intval(mysqli_escape_string($connect, $_POST['idAtividade']));
         $tabuleiro = intval(mysqli_escape_string($connect, $_POST['tabuleiro']));
         $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-    
+        
         $sql = "INSERT INTO atividade_aluno(descricaoatividade, tabuleiroid, usuarioid, `status`, datainicio, atividadeid) VALUES('$descricao', '$tabuleiro','$idusuario', 'Iniciado', now() , '$idatividade');";
-
+        
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/user/index.php');
@@ -98,6 +98,23 @@
             $_SESSION['mensagem']= "Erro ao cadastrar!";
             echo mysqli_error($connect);
             // header('Location: ../users/user/index.php');
+        }
+    }
+
+    function registerbackgroundboard(){
+        require_once './db_connection.php';
+        $url = mysqli_escape_string($connect, $_POST['url']);
+        $tipo = intval(mysqli_escape_string($connect, $_POST['tipo']));
+    
+        $sql = "INSERT INTO imagenstabuleiro(urlImagem, tipoimagemid) VALUES('$url', '$tipo');";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            header('Location: ../users/teacher/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
         }
     }
 
@@ -119,6 +136,9 @@
             break;
         case 'iniciarAtividade':
             initializework();
+            break;
+        case 'criarFundoTabuleiro':
+            registerbackgroundboard();
             break;
         default:
         echo "Não foi possível realizar a operação!";

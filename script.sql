@@ -197,6 +197,23 @@ INSERT INTO tipoimagem(tipoimagem, descricao) VALUES
 ("EXIF","Exchangeable Image File Format"),
 ("EPS","Encapsulated PostScript");
 
+-- -----------------------------------------------------
+-- Table `softedu`.`imagenstabuleiro`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`imagenstabuleiro` ;
+
+CREATE TABLE IF NOT EXISTS `softedu`.`imagenstabuleiro` (
+  `idimagenstabuleiro` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `urlImagem` VARCHAR(45) NOT NULL COMMENT '',
+  `tipoimagemid` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idimagenstabuleiro`)  COMMENT '')
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
+
+CREATE UNIQUE INDEX `urlImagem_UNIQUE` ON `softedu`.`imagenstabuleiro` (`urlImagem` ASC)  COMMENT '';
+
+CREATE INDEX `imagenstabuleiro_tipoimagem_idx` ON `softedu`.`imagenstabuleiro` (`tipoimagemid` ASC)  COMMENT '';
 
 
 

@@ -1,4 +1,11 @@
 -- -----------------------------------------------------
+-- Schema softedu
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `softedu` DEFAULT CHARACTER SET utf8 ;
+USE `softedu`;
+
+
+-- -----------------------------------------------------
 -- Table `softedu`.`usuario`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `softedu`.`usuario` ;
@@ -128,8 +135,6 @@ begin
         inner join categoriaatividade categoria on atividade.categoriaatividadeid = categoria.idcategoriaAtividade;
     end
 $$
-call atividade();
-
 
 DELIMITER $$
 CREATE PROCEDURE atividades_em_andamento(
@@ -147,8 +152,6 @@ begin
     end
 $$
 
-call atividades_em_andamento(3);
-
 DELIMITER $$
 CREATE PROCEDURE atividades_finalizadas(
 in id int)
@@ -165,5 +168,40 @@ begin
         where usuarioid = id and `Status` = "Finalizado";
     end
 $$
+-- call atividade();
+-- call atividades_em_andamento(3);
+-- call atividades_finalizadas(3);
 
-call atividades_finalizadas(3);
+
+-- -----------------------------------------------------
+-- Table `softedu`.`tipoimagem`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`tipoimagem` ;
+
+CREATE TABLE IF NOT EXISTS `softedu`.`tipoimagem` (
+  `idtipoimagem` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `tipoimagem` VARCHAR(45) NOT NULL COMMENT '',
+  `descricao` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idtipoimagem`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+INSERT INTO tipoimagem(tipoimagem, descricao) VALUES
+("PNG","Portable Network Graphics"),
+("JPEG","Joint Photographic Experts Group"),
+("GIF","Graphics Interchange Format"),
+("SVG","Scalable Vector Graphics"),
+("BPM","Bitmap"),
+("PDF","Portable Document Format"),
+("TIFF","Tagged Image File Format"),
+("PSD","Adobe Photoshop Document"),
+("EXIF","Exchangeable Image File Format"),
+("EPS","Encapsulated PostScript");
+
+
+
+
+
+
+
+

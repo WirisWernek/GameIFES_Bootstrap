@@ -4,7 +4,6 @@
 CREATE SCHEMA IF NOT EXISTS `softedu` DEFAULT CHARACTER SET utf8 ;
 USE `softedu`;
 
-
 -- -----------------------------------------------------
 -- Table `softedu`.`usuario`
 -- -----------------------------------------------------

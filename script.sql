@@ -157,6 +157,7 @@ begin
         atividade_aluno.descricaoatividade as Descricao,
 		atividade_aluno.`status` as `Status`,
         atividade_aluno.datainicio as Inicio,
+        atividade_aluno.datafim as Fim,
         atividade_aluno.atividadeid as IdAtividade,
         tabuleiro.plantaTabuleiro as Tabuleiro
         from atividade_aluno inner join tabuleiro

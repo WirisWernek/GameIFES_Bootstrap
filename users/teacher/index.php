@@ -16,6 +16,7 @@
             <a href="./list/listworklevel.php">Gerenciar Níveis Das Atividades</a>
             <a href="./list/listworkcategory.php">Gerenciar Categorias Das Atividades</a>
             <a href="./list/listboard.php">Gerenciar Tabuleiros</a>
+            <a href="./list/listbackgroundboard.php">Gerenciar Imagens de Fundo</a>
             </nav>
         </div>
         

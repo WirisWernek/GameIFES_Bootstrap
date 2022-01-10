@@ -92,4 +92,77 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `softedu`.`atividade_aluno`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`atividade_aluno` ;
 
+CREATE TABLE IF NOT EXISTS `softedu`.`atividade_aluno` (
+  `idatividade_aluno` INT AUTO_INCREMENT NOT NULL COMMENT '',
+  `descricaoatividade` VARCHAR(100) NULL COMMENT '',
+  `tabuleiroid` INT NOT NULL COMMENT '',
+  `usuarioid` INT NOT NULL COMMENT '',
+  `status` VARCHAR(45) NULL COMMENT '',
+  `datainicio` DATETIME NULL COMMENT '',
+  `datafim` DATETIME NULL COMMENT '',
+  `atividadeid` INT NULL COMMENT '',
+  PRIMARY KEY (`idatividade_aluno`)  COMMENT '')
+ENGINE = InnoDB;
+
+CREATE INDEX `atividade_aluno_tabuleiro_idx` ON `softedu`.`atividade_aluno` (`tabuleiroid` ASC)  COMMENT '';
+
+CREATE INDEX `atividade_aluno_usuario_idx` ON `softedu`.`atividade_aluno` (`usuarioid` ASC)  COMMENT '';
+
+CREATE INDEX `atividade_aluno_atividade_idx` ON `softedu`.`atividade_aluno` (`atividadeid` ASC)  COMMENT '';
+
+use softedu;
+DELIMITER $$
+CREATE PROCEDURE atividade()
+begin
+		select atividade.idatividade as IdAtividade,
+        atividade.descricacao as Descricao,
+		nivel.descricaoNivel as Nivel,
+		categoria.descricao as Categoria
+        from atividade inner join nivelatividade nivel
+        on atividade.nivelatividadeid = nivel.idnivelAtividade
+        inner join categoriaatividade categoria on atividade.categoriaatividadeid = categoria.idcategoriaAtividade;
+    end
+$$
+call atividade();
+
+
+DELIMITER $$
+CREATE PROCEDURE atividades_em_andamento(
+in id int)
+begin
+		select atividade_aluno.idatividade_aluno as ID,
+        atividade_aluno.descricaoatividade as Descricao,
+		atividade_aluno.`status` as `Status`,
+        atividade_aluno.datainicio as Inicio,
+        atividade_aluno.atividadeid as IdAtividade,
+        tabuleiro.plantaTabuleiro as Tabuleiro
+        from atividade_aluno inner join tabuleiro
+        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
+        where usuarioid = id and `Status` != "Finalizado";
+    end
+$$
+
+call atividades_em_andamento(3);
+
+DELIMITER $$
+CREATE PROCEDURE atividades_finalizadas(
+in id int)
+begin
+		select atividade_aluno.idatividade_aluno as ID,
+        atividade_aluno.descricaoatividade as Descricao,
+		atividade_aluno.`status` as `Status`,
+        atividade_aluno.datainicio as Inicio,
+        atividade_aluno.atividadeid as IdAtividade,
+        tabuleiro.plantaTabuleiro as Tabuleiro
+        from atividade_aluno inner join tabuleiro
+        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
+        where usuarioid = id and `Status` = "Finalizado";
+    end
+$$
+
+call atividades_finalizadas(3);

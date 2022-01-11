@@ -7,11 +7,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listworklevel.php');
         }
     }
     
@@ -22,11 +22,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listworkcategory.php');
         }
     }
 
@@ -37,11 +37,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listwork.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listwork.php');
         }
     }
 
@@ -52,11 +52,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/admin/index.php');
+            header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/admin/index.php');
+            // header('Location: ../users/admin/list/listusers.php');
         }
     }
     function deleteboard(){
@@ -66,11 +66,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listboard.php');
         }
     }
     function deletebackgroundboard(){
@@ -80,11 +80,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listbackgroundboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listbackgroundboard.php');
         }
     }
     function deleteimageboard(){
@@ -94,11 +94,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listimageboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listimageboard.php');
         }
     }
 

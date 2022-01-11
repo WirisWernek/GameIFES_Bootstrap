@@ -121,70 +121,6 @@ CREATE INDEX `atividade_aluno_usuario_idx` ON `softedu`.`atividade_aluno` (`usua
 
 CREATE INDEX `atividade_aluno_atividade_idx` ON `softedu`.`atividade_aluno` (`atividadeid` ASC)  COMMENT '';
 
-use softedu;
-DELIMITER $$
-CREATE PROCEDURE atividade()
-begin
-		select atividade.idatividade as IdAtividade,
-        atividade.descricacao as Descricao,
-		nivel.descricaoNivel as Nivel,
-		categoria.descricao as Categoria
-        from atividade inner join nivelatividade nivel
-        on atividade.nivelatividadeid = nivel.idnivelAtividade
-        inner join categoriaatividade categoria on atividade.categoriaatividadeid = categoria.idcategoriaAtividade;
-    end
-$$
-
-DELIMITER $$
-CREATE PROCEDURE imagensTabuleiro()
-begin
-		select imagenstabuleiro.idimagenstabuleiro as ID,
-        imagenstabuleiro.urlImagem as URL,
-		tipoimagem.tipoimagem as Tipo
-        from imagenstabuleiro inner join tipoimagem
-        on imagenstabuleiro.tipoimagemid = tipoimagem.idtipoimagem;
-    end
-$$
-
-DELIMITER $$
-CREATE PROCEDURE atividades_em_andamento(
-in id int)
-begin
-		select atividade_aluno.idatividade_aluno as ID,
-        atividade_aluno.descricaoatividade as Descricao,
-		atividade_aluno.`status` as `Status`,
-        atividade_aluno.datainicio as Inicio,
-        atividade_aluno.atividadeid as IdAtividade,
-        tabuleiro.plantaTabuleiro as Tabuleiro
-        from atividade_aluno inner join tabuleiro
-        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
-        where usuarioid = id and `Status` != "Finalizado";
-    end
-$$
-
-DELIMITER $$
-CREATE PROCEDURE atividades_finalizadas(
-in id int)
-begin
-		select atividade_aluno.idatividade_aluno as ID,
-        atividade_aluno.descricaoatividade as Descricao,
-		atividade_aluno.`status` as `Status`,
-        atividade_aluno.datainicio as Inicio,
-        atividade_aluno.datafim as Fim,
-        atividade_aluno.atividadeid as IdAtividade,
-        tabuleiro.plantaTabuleiro as Tabuleiro
-        from atividade_aluno inner join tabuleiro
-        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
-        where usuarioid = id and `Status` = "Finalizado";
-    end
-$$
-
--- call atividade();
--- call imagensTabuleiro();
--- call atividades_em_andamento(3);
--- call atividades_finalizadas(3);
-
-
 -- -----------------------------------------------------
 -- Table `softedu`.`tipoimagem`
 -- -----------------------------------------------------
@@ -247,6 +183,67 @@ CREATE INDEX `tabuleiro_imagenstabuleiro_tabuleiro_idx` ON `softedu`.`tabuleiro_
 
 CREATE INDEX `tabuleiro_imagenstabuleiro_imgstabuleiro_idx` ON `softedu`.`tabuleiro_imagenstabuleiro` (`imagenstabuleiroID` ASC)  COMMENT '';
 
+-- -----------------------------------------------------
+-- PROCEDURES 
+-- -----------------------------------------------------
+use softedu;
+DELIMITER $$
+CREATE PROCEDURE atividade()
+begin
+		select atividade.idatividade as IdAtividade,
+        atividade.descricacao as Descricao,
+		nivel.descricaoNivel as Nivel,
+		categoria.descricao as Categoria
+        from atividade inner join nivelatividade nivel
+        on atividade.nivelatividadeid = nivel.idnivelAtividade
+        inner join categoriaatividade categoria on atividade.categoriaatividadeid = categoria.idcategoriaAtividade;
+    end
+$$
+
+DELIMITER $$
+CREATE PROCEDURE atividades_em_andamento(
+in id int)
+begin
+		select atividade_aluno.idatividade_aluno as ID,
+        atividade_aluno.descricaoatividade as Descricao,
+		atividade_aluno.`status` as `Status`,
+        atividade_aluno.datainicio as Inicio,
+        atividade_aluno.atividadeid as IdAtividade,
+        tabuleiro.plantaTabuleiro as Tabuleiro
+        from atividade_aluno inner join tabuleiro
+        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
+        where usuarioid = id and `Status` != "Finalizado";
+    end
+$$
+
+DELIMITER $$
+CREATE PROCEDURE atividades_finalizadas(
+in id int)
+begin
+		select atividade_aluno.idatividade_aluno as ID,
+        atividade_aluno.descricaoatividade as Descricao,
+		atividade_aluno.`status` as `Status`,
+        atividade_aluno.datainicio as Inicio,
+        atividade_aluno.datafim as Fim,
+        atividade_aluno.atividadeid as IdAtividade,
+        tabuleiro.plantaTabuleiro as Tabuleiro
+        from atividade_aluno inner join tabuleiro
+        on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
+        where usuarioid = id and `Status` = "Finalizado";
+    end
+$$
+
+DELIMITER $$
+CREATE PROCEDURE imagensTabuleiro()
+begin
+		select imagenstabuleiro.idimagenstabuleiro as ID,
+        imagenstabuleiro.urlImagem as URL,
+		tipoimagem.tipoimagem as Tipo
+        from imagenstabuleiro inner join tipoimagem
+        on imagenstabuleiro.tipoimagemid = tipoimagem.idtipoimagem;
+    end
+$$
+
 DELIMITER $$
 CREATE PROCEDURE tabuleiro_imagem()
 begin
@@ -260,6 +257,9 @@ begin
     end
 $$
 
-call tabuleiro_imagem();
-
-
+-- Exemplos de Chamadas das Procedures
+-- call atividade();
+-- call atividades_em_andamento(3);
+-- call atividades_finalizadas(3);
+-- call imagensTabuleiro();
+-- call tabuleiro_imagem();

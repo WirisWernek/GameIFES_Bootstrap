@@ -83,6 +83,22 @@
             // header('Location: ../users/teacher/index.php');
         }
     }
+    function updatebackgroundboard(){
+        require_once './db_connection.php';
+        $id = mysqli_escape_string($connect, $_POST['id']);
+        $url = mysqli_escape_string($connect, $_POST['url']);
+        $tipo = intval(mysqli_escape_string($connect, $_POST['tipo']));
+        $sql = "UPDATE imagenstabuleiro SET urlImagem='$url', tipoimagemid='$tipo' WHERE idimagenstabuleiro = '$id';";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Atualizado com sucesso!";
+            header('Location: ../users/teacher/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao atualizar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
+        }
+    }
 
     switch($_POST['opcao']){
         case 'atualizarNivel':
@@ -99,6 +115,9 @@
             break;
         case 'atualizarTabuleiro':
             updateboard();
+            break;
+        case 'atualizarFundoTabuleiro':
+            updatebackgroundboard();
             break;
         default:
         echo "Não foi possível realizar a operação!";

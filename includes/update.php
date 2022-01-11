@@ -8,10 +8,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            header('Location: ../users/teacher/index.php');
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/list/listworklevel.php');
         }
     }
     
@@ -23,10 +24,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            header('Location: ../users/teacher/index.php');
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/list/listworkcategory.php');
         }
     }
 
@@ -40,11 +42,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listwork.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listwork.php');
         }
     }
     
@@ -59,11 +61,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/admin/index.php');
+            header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/admin/index.php');
+            // header('Location: ../users/admin/list/listusers.php');
         }
     }
 
@@ -76,11 +78,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listboard.php');
         }
     }
     function updatebackgroundboard(){
@@ -92,11 +94,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listbackgroundboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listbackgroundboard.php');
         }
     }
     function updateimageboard(){
@@ -109,11 +111,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listimageboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listimageboard.php');
         }
     }
 

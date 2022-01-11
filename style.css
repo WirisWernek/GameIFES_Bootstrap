@@ -1,22 +1,32 @@
+:root {
+    --preto: rgb(31, 76, 97);
+    --verde: rgb(33, 109, 100);
+    --azul: rgb(24, 31, 88);
+    --cinza: rgb(224, 224, 224);
+}
+
 body{
-    background-image: linear-gradient(#972a2a, rgb(43, 16, 16));
+    background-image: linear-gradient(var(--preto), rgb(24, 24, 24));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 0px;
+    margin: 0px;
 }
 
 fieldset{
-    background-color: brown;
+    background-color: var(--verde);
     color: rgb(236, 236, 236);
     border-color: transparent;
     border-radius: 5px;
-    max-width: 300px;
+    max-width: 400px;
     min-height: 40vh;
-    padding: 2rem;
-    box-shadow: 5px 3px 10px rgb(51, 17, 17);
+    padding: 3rem;
+    box-shadow: 5px 3px 10px rgb(11, 97, 102);
     text-align: center;
 }
 
@@ -35,16 +45,20 @@ fieldset{
 }
 
 [name="btn-login"] {
+    color: rgb(34, 34, 34);
     margin-top: 50px;
     background-color: rgb(212, 212, 212);
     width: 10rem;
     height: 30px;
     border-color: transparent;
     border-radius: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 [name="btn-login"]:hover {
-    background-color: rgb(180, 82, 82);
-    color: whitesmoke;
+    background-color: var(--cinza);
+    color: rgb(0, 0, 0);
     cursor: pointer;
+    box-shadow: 5px 3px 10px rgb(25, 208, 218);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

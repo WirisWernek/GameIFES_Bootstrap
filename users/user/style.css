@@ -1,22 +1,32 @@
-nav {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    text-align: center;
-    background-color: rgb(238, 238, 238);
-    width: 100%;
+:root {
+    --preto: rgb(31, 76, 97);
+    --verde: rgb(33, 109, 100);
+    --azul: rgb(24, 31, 88);
+    --cinza: rgb(224, 224, 224);
 }
 
-nav a {
-    display: inline-flex;
-    text-align: center;
-    padding: 1rem 1rem 0.5rem 1rem;
-    background-color: rgb(238, 238, 238);
+body{
+    background-image: linear-gradient(var(--preto), rgb(24, 24, 24));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    border: 0px;
+    margin: 0px;
+    color:rgb(224, 224, 224);
+}
+
+main {
+    padding-left: 10px;
+}
+
+a {
+    background-color: var(--cinza);
     text-decoration: none;
-    color: #4974c4;
+    padding: 5px;
+    border-radius: 4px;
 }
 
-nav a:hover {
-    color: black;
-    background-color: #4974c4;
-    cursor: pointer;
-}
+
+
+

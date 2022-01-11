@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(#792b2b, black);
+    background-image: linear-gradient(#972a2a, rgb(43, 16, 16));
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
@@ -16,5 +16,35 @@ fieldset{
     max-width: 300px;
     min-height: 40vh;
     padding: 2rem;
-    box-shadow: 5px 5px 8px rgb(73, 18, 18);
+    box-shadow: 5px 3px 10px rgb(51, 17, 17);
+    text-align: center;
+}
+
+[id=login] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-color: transparent;
+    border-radius: 3px;
+}
+
+[id=senha]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: transparent;
+    border-radius: 3px;
+}
+
+[name="btn-login"] {
+    margin-top: 50px;
+    background-color: rgb(212, 212, 212);
+    width: 10rem;
+    height: 30px;
+    border-color: transparent;
+    border-radius: 6px;
+}
+
+[name="btn-login"]:hover {
+    background-color: rgb(180, 82, 82);
+    color: whitesmoke;
+    cursor: pointer;
 }

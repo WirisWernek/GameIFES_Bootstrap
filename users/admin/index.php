@@ -19,7 +19,7 @@
         <div>
             <nav>
             <a href="#">Home</a>
-            <a href="./manager/manageruser.php">Gerenciar Usuários</a>
+            <a href="./list/listusers.php">Gerenciar Usuários</a>
             </nav>
         </div> 
     </header>

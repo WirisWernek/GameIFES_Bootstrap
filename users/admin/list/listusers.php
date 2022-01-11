@@ -7,7 +7,7 @@
     <title>Listar Nível Atividade</title>
 </head>
 <body>
-    
+        <a href="../create/registeruser.php">Cadastrar Novo Usuário</a>
         <?php
         require_once '../../../includes/list.php';
         listusers();

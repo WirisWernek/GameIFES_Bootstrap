@@ -136,6 +136,17 @@ begin
 $$
 
 DELIMITER $$
+CREATE PROCEDURE imagensTabuleiro()
+begin
+		select imagenstabuleiro.idimagenstabuleiro as ID,
+        imagenstabuleiro.urlImagem as URL,
+		tipoimagem.tipoimagem as Tipo
+        from imagenstabuleiro inner join tipoimagem
+        on imagenstabuleiro.tipoimagemid = tipoimagem.idtipoimagem;
+    end
+$$
+
+DELIMITER $$
 CREATE PROCEDURE atividades_em_andamento(
 in id int)
 begin
@@ -167,7 +178,9 @@ begin
         where usuarioid = id and `Status` = "Finalizado";
     end
 $$
+
 -- call atividade();
+-- call imagensTabuleiro();
 -- call atividades_em_andamento(3);
 -- call atividades_finalizadas(3);
 

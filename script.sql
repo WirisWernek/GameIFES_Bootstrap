@@ -4,7 +4,6 @@
 CREATE SCHEMA IF NOT EXISTS `softedu` DEFAULT CHARACTER SET utf8 ;
 USE `softedu`;
 
-
 -- -----------------------------------------------------
 -- Table `softedu`.`usuario`
 -- -----------------------------------------------------
@@ -137,6 +136,17 @@ begin
 $$
 
 DELIMITER $$
+CREATE PROCEDURE imagensTabuleiro()
+begin
+		select imagenstabuleiro.idimagenstabuleiro as ID,
+        imagenstabuleiro.urlImagem as URL,
+		tipoimagem.tipoimagem as Tipo
+        from imagenstabuleiro inner join tipoimagem
+        on imagenstabuleiro.tipoimagemid = tipoimagem.idtipoimagem;
+    end
+$$
+
+DELIMITER $$
 CREATE PROCEDURE atividades_em_andamento(
 in id int)
 begin
@@ -168,7 +178,9 @@ begin
         where usuarioid = id and `Status` = "Finalizado";
     end
 $$
+
 -- call atividade();
+-- call imagensTabuleiro();
 -- call atividades_em_andamento(3);
 -- call atividades_finalizadas(3);
 
@@ -198,10 +210,56 @@ INSERT INTO tipoimagem(tipoimagem, descricao) VALUES
 ("EXIF","Exchangeable Image File Format"),
 ("EPS","Encapsulated PostScript");
 
+-- -----------------------------------------------------
+-- Table `softedu`.`imagenstabuleiro`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`imagenstabuleiro` ;
 
+CREATE TABLE IF NOT EXISTS `softedu`.`imagenstabuleiro` (
+  `idimagenstabuleiro` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `urlImagem` VARCHAR(45) NOT NULL COMMENT '',
+  `tipoimagemid` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idimagenstabuleiro`)  COMMENT '')
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
 
+CREATE UNIQUE INDEX `urlImagem_UNIQUE` ON `softedu`.`imagenstabuleiro` (`urlImagem` ASC)  COMMENT '';
 
+CREATE INDEX `imagenstabuleiro_tipoimagem_idx` ON `softedu`.`imagenstabuleiro` (`tipoimagemid` ASC)  COMMENT '';
 
+-- -----------------------------------------------------
+-- Table `softedu`.`tabuleiro_imagenstabuleiro`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`tabuleiro_imagenstabuleiro` ;
 
+CREATE TABLE IF NOT EXISTS `softedu`.`tabuleiro_imagenstabuleiro` (
+  `idtabuleiro_imagenstabuleiro` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `tabuleiroID` INT(11) NOT NULL COMMENT '',
+  `imagenstabuleiroID` INT(11) NOT NULL COMMENT '',
+  `posicaoTabuleiro` INT(11) NOT NULL COMMENT '',
+  PRIMARY KEY (`idtabuleiro_imagenstabuleiro`)  COMMENT '')
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
+
+CREATE INDEX `tabuleiro_imagenstabuleiro_tabuleiro_idx` ON `softedu`.`tabuleiro_imagenstabuleiro` (`tabuleiroID` ASC)  COMMENT '';
+
+CREATE INDEX `tabuleiro_imagenstabuleiro_imgstabuleiro_idx` ON `softedu`.`tabuleiro_imagenstabuleiro` (`imagenstabuleiroID` ASC)  COMMENT '';
+
+DELIMITER $$
+CREATE PROCEDURE tabuleiro_imagem()
+begin
+		select tabuleiro_imagenstabuleiro.idtabuleiro_imagenstabuleiro as ID,
+        tabuleiro_imagenstabuleiro.posicaoTabuleiro as Posicao,
+		imagenstabuleiro.urlImagem as Imagem,
+        tabuleiro.descricao as Tabuleiro
+        from tabuleiro_imagenstabuleiro inner join tabuleiro
+        on tabuleiro_imagenstabuleiro.tabuleiroID = tabuleiro.idtabuleiro
+        inner join  imagenstabuleiro on tabuleiro_imagenstabuleiro.imagenstabuleiroID = imagenstabuleiro.idimagenstabuleiro;
+    end
+$$
+
+call tabuleiro_imagem();
 
 

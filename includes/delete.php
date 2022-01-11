@@ -7,11 +7,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listworklevel.php');
         }
     }
     
@@ -22,11 +22,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listworkcategory.php');
         }
     }
 
@@ -37,11 +37,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listwork.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listwork.php');
         }
     }
 
@@ -52,11 +52,11 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/admin/index.php');
+            header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/admin/index.php');
+            // header('Location: ../users/admin/list/listusers.php');
         }
     }
     function deleteboard(){
@@ -66,11 +66,39 @@
 
         if(mysqli_query($connect, $sql)){
             $_SESSION['mensagem']= "Deletado com sucesso!";
-            header('Location: ../users/teacher/index.php');
+            header('Location: ../users/teacher/list/listboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo mysqli_error($connect);
-            // header('Location: ../users/teacher/index.php');
+            // header('Location: ../users/teacher/list/listboard.php');
+        }
+    }
+    function deletebackgroundboard(){
+        require_once './db_connection.php';
+        $id = mysqli_escape_string($connect, $_POST['id']);
+        $sql = "DELETE FROM imagenstabuleiro WHERE idimagenstabuleiro = '$id';";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Deletado com sucesso!";
+            header('Location: ../users/teacher/list/listbackgroundboard.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao deletar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/list/listbackgroundboard.php');
+        }
+    }
+    function deleteimageboard(){
+        require_once './db_connection.php';
+        $id = mysqli_escape_string($connect, $_POST['id']);
+        $sql = "DELETE FROM tabuleiro_imagenstabuleiro WHERE idtabuleiro_imagenstabuleiro = '$id';";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Deletado com sucesso!";
+            header('Location: ../users/teacher/list/listimageboard.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao deletar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/list/listimageboard.php');
         }
     }
 
@@ -89,6 +117,12 @@
             break;
         case 'deletarTabuleiro':
             deleteboard();
+            break;
+        case 'deletarFundoTabuleiro':
+            deletebackgroundboard();
+            break;
+        case 'deletarImagemTabuleiro':
+            deleteimageboard();
             break;
         default:
         echo "Não foi possível realizar a operação!";

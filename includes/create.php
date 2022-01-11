@@ -117,6 +117,24 @@
             // header('Location: ../users/teacher/index.php');
         }
     }
+    function registerimageboard(){
+        require_once './db_connection.php';
+        $imagem = intval(mysqli_escape_string($connect, $_POST['url']));
+        $tabuleiro = intval(mysqli_escape_string($connect, $_POST['tabuleiro']));
+        $posicao = intval(mysqli_escape_string($connect, $_POST['posicao']));
+
+    
+        $sql = "INSERT INTO tabuleiro_imagenstabuleiro(imagenstabuleiroID, tabuleiroID, posicaoTabuleiro) VALUES('$imagem', '$tabuleiro', '$posicao');";
+
+        if(mysqli_query($connect, $sql)){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
+            header('Location: ../users/teacher/index.php');
+        }else{
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            echo mysqli_error($connect);
+            // header('Location: ../users/teacher/index.php');
+        }
+    }
 
     switch($_POST['opcao']){
         case 'criarNivel':
@@ -139,6 +157,9 @@
             break;
         case 'criarFundoTabuleiro':
             registerbackgroundboard();
+            break;
+        case 'criarImagemTabuleiro':
+            registerimageboard();
             break;
         default:
         echo "Não foi possível realizar a operação!";

@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <title>Atividades</title>
 </head>
 <body>   
     <main>
     <h1>Atividades Em Andamento</h1>
-    <div id="buttons">
-        <a href="./initnewwork.php">Nova Atividade</a><br><br>
-        <a href="./finishedwork.php">Atividades Finalizadas</a>
-    </div>
+    <a href="./initnewwork.php">Nova Atividade</a><br><br>
+    <a href="./finishedwork.php">Atividades Finalizadas</a>
     <?php
     session_start();
     $id = intval($_SESSION['id']);

@@ -10,8 +10,8 @@
 <body>   
     <main>
     <h1>Atividades Em Andamento</h1>
-    <a href="./initnewwork.php">Nova Atividade</a><br><br>
-    <a href="./finishedwork.php">Atividades Finalizadas</a>
+    <a href="./user/initnewwork.php">Nova Atividade</a><br><br>
+    <a href="./user/finishedwork.php">Atividades Finalizadas</a>
     <?php
     session_start();
     $id = intval($_SESSION['id']);

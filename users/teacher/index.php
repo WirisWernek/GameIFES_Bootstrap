@@ -12,12 +12,12 @@
         <div>
             <nav>
             <a href="#">Home</a>
-            <a href="./list/listwork.php">Gerenciar Atividades</a>
-            <a href="./list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
-            <a href="./list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
-            <a href="./list/listboard.php">Gerenciar Tabuleiros</a>
-            <a href="./list/listbackgroundboard.php">Gerenciar Imagens de Fundo</a>
-            <a href="./list/listimageboard.php">Gerenciar Imagens Tabuleiro</a>
+            <a href="./teacher/list/listwork.php">Gerenciar Atividades</a>
+            <a href="./teacher/list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
+            <a href="./teacher/list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
+            <a href="./teacher/list/listboard.php">Gerenciar Tabuleiros</a>
+            <a href="./teacher/list/listbackgroundboard.php">Gerenciar Imagens de Fundo</a>
+            <a href="./teacher/list/listimageboard.php">Gerenciar Imagens Tabuleiro</a>
             </nav>
         </div>
         

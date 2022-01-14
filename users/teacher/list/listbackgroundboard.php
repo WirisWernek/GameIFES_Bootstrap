@@ -8,7 +8,7 @@
     <title>Gerenciar Fundos de Tabuleiro</title>
 </head>
 <body>
-        <a href="../create/registerbackgroundboard.php">Cadastrar Nova Imagem de Fundo</a>
+    <br><a href="../create/registerbackgroundboard.php">Cadastrar Nova Imagem de Fundo</a>
         <?php
         require_once '../../../includes/list.php';
         listbackgroundboard();

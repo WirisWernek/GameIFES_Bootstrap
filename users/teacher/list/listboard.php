@@ -8,7 +8,7 @@
     <title>Gerenciar Tabuleiros</title>
 </head>
 <body>
-        <a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
+        <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
         <?php
         require_once '../../../includes/list.php';
         listboard();

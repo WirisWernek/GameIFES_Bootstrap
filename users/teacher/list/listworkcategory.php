@@ -8,7 +8,7 @@
     <title>Gerenciar Categorias das Atividades</title>
 </head>
 <body>
-        <a href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
+        <br><a href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
         <?php
         include_once '../../../includes/list.php';
         listcategory();

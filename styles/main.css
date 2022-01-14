@@ -6,7 +6,7 @@
 }
 
 body{
-    background-image: linear-gradient(var(--preto), rgb(24, 24, 24));
+    background-image: linear-gradient(rgb(36, 96, 124), rgb(24, 24, 24));
     color: var(--cinza);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-repeat: no-repeat;
@@ -30,6 +30,7 @@ fieldset{
 
 main {
     color: var(--cinza);
+    padding: 10px;
 }
 
 

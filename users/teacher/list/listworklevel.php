@@ -8,7 +8,7 @@
     <title>Gerenciar Níveis da Atividades</title>
 </head>
 <body>
-        <a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
+        <br><a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
         <?php
         require_once '../../../includes/list.php';
         listlevel();

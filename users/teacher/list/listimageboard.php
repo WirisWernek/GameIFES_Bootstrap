@@ -8,7 +8,7 @@
     <title>Gerenciar Imagens Tabuleiro</title>
 </head>
 <body>
-        <a href="../create/registerimageboard.php">Cadastrar Nova Imagem de Fundo</a>
+        <br><a href="../create/registerimageboard.php">Cadastrar Nova Imagem de Fundo</a>
         <?php
         require_once '../../../includes/list.php';
         listimageboard();

@@ -8,11 +8,13 @@
     <title>Gerenciar Atividades</title>
 </head>
 <body>
-        <br><a href="../create/registerwork.php">Cadastrar Atividade</a>
-        <?php
-        require_once '../../../includes/list.php';
-        listwork();
-        ?>
+        <main>
+            <br><a href='../create/registerwork.php'>Cadastrar Atividade</a>
+            <?php
+            require_once '../../../includes/list.php';
+            listwork();
+            ?>
+        <main>
 
 </body>
 </html>

@@ -34,7 +34,7 @@
             ?>
         </select>
         
-        <input type="submit" value="Cadastrar">
+        <input type="submit" value="Iniciar">
     </form>    
 
 </body>

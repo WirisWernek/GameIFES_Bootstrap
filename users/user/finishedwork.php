@@ -11,27 +11,26 @@
     <h1>Atividades Finalizadas</h1>
     <?php
         session_start();
-        $id = intval($_SESSION['id']);
-        require_once '../../includes/db_connection.php';
+        require_once '../../includes/classes/Atividade_Aluno.php';
+        require_once '../../includes/classes/Conexao.php';
 
-            $sql = "call atividades_finalizadas('$id');";
-            $resultado = mysqli_query($connect, $sql);
-
-            while($dados = mysqli_fetch_assoc($resultado)):
-                $data_inicio = new DateTime($dados['Inicio']);
-                $data_fim = new DateTime($dados['Fim']);
-        ?>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Status: <?php echo $dados['Status']; ?> </h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Tabuleiro: <?php echo $dados['Tabuleiro']; ?> </h6>
-                        <p class="card-text">Iniciado em: <?php echo $data_inicio->format("d/m/Y H:i") ?></p>
-                        <p class="card-text">Finalizado em: <?php echo $data_fim->format("d/m/Y H:i") ?></p>
-                    </div>
+        $atividades = new AtividadeAluno();
+        $resultado = $atividades->AtividadesFinalizadas();
+        while($dados =$resultado->fetch_assoc()):
+            $data_inicio = new DateTime($dados['Inicio']);
+            $data_fim = new DateTime($dados['Fim']);
+    ?>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Status: <?php echo $dados['Status']; ?> </h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Tabuleiro: <?php echo $dados['Tabuleiro']; ?> </h6>
+                    <p class="card-text">Iniciado em: <?php echo $data_inicio->format("d/m/Y H:i") ?></p>
+                    <p class="card-text">Finalizado em: <?php echo $data_fim->format("d/m/Y H:i") ?></p>
                 </div>
-        <?php
-            endwhile;
-        ?>
+            </div>
+    <?php
+        endwhile;
+    ?>
 </body>
 </html>

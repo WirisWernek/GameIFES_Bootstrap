@@ -1,16 +1,9 @@
 <?php
     session_start();
-    require_once '../../includes/db_connection.php';
-    $id = intval($_GET['id']);
-    $sql = "UPDATE atividade_aluno SET `status`='Finalizado', datafim = now() WHERE idatividade_aluno = '$id';";
-    
-    if(mysqli_query($connect, $sql)){
-        $_SESSION['mensagem']= "Atividade Finalizado com sucesso!";
-        header('Location: ./index.php');
-    }else{
-        $_SESSION['mensagem']= "Erro ao finalizar atividade!";
-        echo mysqli_error($connect);
-        // header('Location: ./index.php');
-    }
+    require_once '../../includes/classes/Atividade_Aluno.php';
+    require_once '../../includes/classes/Conexao.php';
 
+    $atividades = new AtividadeAluno();
+    $id = intval($_GET['id']);
+    $resultado = $atividades->Delete($id);
 ?>

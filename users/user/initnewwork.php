@@ -10,11 +10,14 @@
 <body>
     <h1>Atividades</h1>
     <?php
-        require_once '../../includes/db_connection.php';
-        $sql = "call atividade();";
-        $resultado = mysqli_query($connect, $sql);
+        session_start();
+        require_once '../../includes/classes/Atividade_Aluno.php';
+        require_once '../../includes/classes/Conexao.php';
+
+        $novaatividade = new AtividadeAluno();
+        $resultado = $novaatividade->NovaAtividade();
         $i = 0;
-        while($dados = mysqli_fetch_assoc($resultado)):
+        while($dados =$resultado->fetch_assoc()):
     ?>
         <div class="card" style="width: 18rem;">
             <div class="card-body">

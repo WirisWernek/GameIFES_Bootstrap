@@ -7,38 +7,35 @@
     <link rel="stylesheet" href="../../../styles/main.css">
     <title>Atividades</title>
 </head>
-<body>   
+<body>
     <main>
     <h1>Atividades Em Andamento</h1>
-    <a href="./user/initnewwork.php">Nova Atividade</a><br><br>
-    <a href="./user/finishedwork.php">Atividades Finalizadas</a>
+    <a href="./initnewwork.php">Nova Atividade</a>
+    <a href="./finishedwork.php">Atividades Finalizadas</a>
     <?php
-    session_start();
-    $id = intval($_SESSION['id']);
-    require_once '../../includes/db_connection.php';
-
-        $sql = "call atividades_em_andamento('$id');";
-        $resultado = mysqli_query($connect, $sql);
-
-        while($dados = mysqli_fetch_assoc($resultado)):
-            if($dados['Status']=="Iniciado"):
+        require_once '../../includes/classes/Atividade_Aluno.php';
+        require_once '../../includes/classes/Conexao.php';
+        
+        session_start();
+        $atividades = new AtividadeAluno();
+        $resultado = $atividades->AtividadesEmAndamento();
+        
+        while ($dados = $resultado->fetch_assoc()):
                 $data_inicio = new DateTime($dados['Inicio']);
-    ?>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Status: <?php echo $dados['Status']; ?> </h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Tabuleiro: <?php echo $dados['Tabuleiro']; ?> </h6>
-                        <p class="card-text">Iniciado em: <?php echo $data_inicio->format("d/m/Y H:i") ?></p>
-                        <a href="?id=<?php echo $dados['ID']; ?>" class="card-link">Continuar</a>
-                        <a href="./endwork.php?id=<?php echo $dados['ID']; ?>" class="card-link">Finalizar</a>
-                    </div>
+        ?>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Status: <?php echo $dados['Status']; ?> </h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Tabuleiro: <?php echo $dados['Tabuleiro']; ?> </h6>
+                    <p class="card-text">Iniciado em: <?php echo $data_inicio->format("d/m/Y H:i") ?></p>
+                    <a href="?id=<?php echo $dados['ID']; ?>" class="card-link">Continuar</a>
+                    <a href="./endwork.php?id=<?php echo $dados['ID']; ?>" class="card-link">Finalizar</a>
                 </div>
-    <?php
-            endif;
+            </div>
+		<?php
         endwhile;
-    ?>
+        ?>
     </main>
-
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
     session_start();
     function registerworklevel(){
-        require_once('./classes/Nivel_Atividade.php');
         require_once('./classes/Conexao.php');
+        require_once('./classes/Nivel_Atividade.php');
         $nivel = new NivelAtividade();
         $conexao = $nivel->getConexao();
         $resultado = $nivel->Create($_POST['descricao']);
@@ -17,8 +17,8 @@
     }
     
     function registerworkcategory(){
-        require_once('./classes/Categoria_Atividade.php');
         require_once('./classes/Conexao.php');
+        require_once('./classes/Categoria_Atividade.php');
         $categoria = new CategoriaAtividade();
         $conexao = $categoria->getConexao();
         $resultado = $categoria->Create($_POST['descricao']);
@@ -33,19 +33,18 @@
     }
 
     function registerwork(){
-        require_once './db_connection.php';
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $categoria = intval(mysqli_escape_string($connect, $_POST['categoria']));
-        $nivel = intval(mysqli_escape_string($connect, $_POST['nivel']));
-        $sql = "INSERT INTO atividade(descricacao, categoriaatividadeid, nivelatividadeid) VALUES('$descricao', '$categoria', '$nivel');";
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Atividade.php');
+        $atividade = new Atividade();
+        $conexao = $atividade->getConexao();
+        $resultado = $atividade->Create($_POST['descricao'], $_POST['categoria'], $_POST['nivel']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/teacher/list/listwork.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listwork.php');
+            echo $conexao->error;
         }
     }
 

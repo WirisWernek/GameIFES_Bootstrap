@@ -33,20 +33,18 @@
     }
 
     function updatework(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $categoria = intval(mysqli_escape_string($connect, $_POST['categoria']));
-        $nivel = intval(mysqli_escape_string($connect, $_POST['nivel']));
-        $sql = "UPDATE atividade SET descricacao='$descricao', categoriaatividadeid='$categoria', nivelatividadeid='$nivel' WHERE idatividade = '$id';";
-
-        if(mysqli_query($connect, $sql)){
-            $_SESSION['mensagem']= "Atualizado com sucesso!";
+        require_once('./classes/Atividade.php');
+        require_once('./classes/Conexao.php');
+        $atividade = new Atividade();
+        $conexao = $atividade->getConexao();
+        $resultado = $atividade->Update($_POST['id'], $_POST['descricao'], $_POST['categoria'], $_POST['nivel']);
+        
+        if($resultado){
+            $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/teacher/list/listwork.php');
         }else{
-            $_SESSION['mensagem']= "Erro ao atualizar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listwork.php');
+            $_SESSION['mensagem']= "Erro ao cadastrar!";
+            echo $conexao->error;
         }
     }
     

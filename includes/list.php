@@ -9,29 +9,15 @@
     function listlevel(){
         include_once '../../../includes/classes/Conexao.php';
         include_once '../../../includes/classes/Nivel_Atividade.php';
-        $categoria = new NivelAtividade();
-        $categoria->Read();
+        $nivel = new NivelAtividade();
+        $nivel->Read();
     }
 
     function listwork(){
-        require_once '../../../includes/db_connection.php';
-        $sql = "call atividade();";
-        $resultado = mysqli_query($connect, $sql);
-        while($dados = mysqli_fetch_assoc($resultado)){   
-            echo '<form action="../../../includes/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarAtividade">';
-            echo '<input type="hidden" name="id" value="' . $dados['IdAtividade'] . '">';
-            echo '<label for="descricao">Descrição: </label>';
-            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['Descricao'] . '" disabled>';
-            echo '<label for="categoria">Categoria: </label>';
-            echo '<input type="text" name="categoria" id="categoria" value="' . $dados['Categoria'] . '" disabled>';
-            echo '<label for="nivel">Nível: </label>';
-            echo '<input type="text" name="nivel" id="nivel" value="' . $dados['Nivel'] . '" disabled>';
-            echo '<a href="../update/updatework.php?id='. $dados['IdAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
-            echo '<br>';
-            echo '</form>';
-        }
+        require_once('../../../includes/classes/Conexao.php');
+        require_once('../../../includes/classes/Atividade.php');
+        $atividade = new Atividade();
+        $atividade->Read();
     }
 
     function listusers(){

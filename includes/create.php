@@ -16,17 +16,18 @@
     }
     
     function registerworkcategory(){
-        require_once './db_connection.php';
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $sql = "INSERT INTO categoriaatividade(descricao) VALUES('$descricao');";
+        require_once('./classes/Categoria_Atividade.php');
+        require_once('./classes/Conexao.php');
+        $categoria = new CategoriaAtividade();
+        $conexao = $categoria->getConexao();
+        $resultado = $categoria->Create($_POST['descricao']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworkcategory.php');
+            echo $conexao->error;
         }
     }
 

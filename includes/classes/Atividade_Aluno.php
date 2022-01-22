@@ -40,19 +40,8 @@ class AtividadeAluno{
     public function getAtividade(){
         return $this->atividade;
     }
-
     public function getConexao(){
         return $this->conexao;
-    }
-
-    public function Create(){
-        
-    }
-    public function Read(){
-
-    }
-    public function Update(){
-
     }
     public function Delete($id){
        

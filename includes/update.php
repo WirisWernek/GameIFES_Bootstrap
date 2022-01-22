@@ -17,18 +17,18 @@
     }
     
     function updateworkcategory(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $sql = "UPDATE categoriaatividade SET descricao='$descricao' WHERE idcategoriaAtividade = '$id';";
+        require_once('./classes/Categoria_Atividade.php');
+        require_once('./classes/Conexao.php');
+        $categoria = new CategoriaAtividade();
+        $conexao = $categoria->getConexao();
+        $resultado = $categoria->Update($_POST['id'], $_POST['descricao']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworkcategory.php');
+            echo $conexao->error;
         }
     }
 

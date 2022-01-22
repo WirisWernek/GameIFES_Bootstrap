@@ -1,19 +1,9 @@
 <?php
     function listcategory(){
-        require_once '../../../includes/db_connection.php';
-        $sql = "SELECT * FROM categoriaatividade";
-        $resultado = mysqli_query($connect, $sql);
-        while($dados = mysqli_fetch_assoc($resultado)){   
-            echo '<form action="../../../includes/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarCategoria">';
-            echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
-            echo '<label for="descricao">Descrição: </label>';
-            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
-            echo '<a href="../update/updateworkcategory.php?id='. $dados['idcategoriaAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
-            echo '<br>';
-            echo '</form>';
-        } 
+        include_once '../../../includes/classes/Conexao.php';
+        include_once '../../../includes/classes/Categoria_Atividade.php';
+        $categoria = new CategoriaAtividade();
+        $categoria->Read();
     }
     
     function listlevel(){

@@ -16,17 +16,18 @@
     }
     
     function deleteworkcategory(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $sql = "DELETE FROM categoriaatividade WHERE idcategoriaAtividade = '$id';";
+        include_once './classes/Conexao.php';
+        include_once './classes/Categoria_Atividade.php';
+        $categoria = new CategoriaAtividade();
+        $conexao = $categoria->getConexao();
+        $resultado = $categoria->Delete($_POST['id']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Deletado com sucesso!";
             header('Location: ../users/teacher/list/listworkcategory.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworkcategory.php');
+            echo $conexao->error;
         }
     }
 

@@ -1,17 +1,18 @@
 <?php
     session_start();
     function registerworklevel(){
-        require_once './db_connection.php';
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $sql = "INSERT INTO nivelatividade(descricaoNivel) VALUES('$descricao');";
+        require_once('./classes/Nivel_Atividade.php');
+        require_once('./classes/Conexao.php');
+        $nivel = new NivelAtividade();
+        $conexao = $nivel->getConexao();
+        $resultado = $nivel->Create($_POST['descricao']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworklevel.php');
+            echo $conexao->error;
         }
     }
     

@@ -7,20 +7,10 @@
     }
     
     function listlevel(){
-        require_once '../../../includes/db_connection.php';
-        $sql = "SELECT * FROM nivelatividade";
-        $resultado = mysqli_query($connect, $sql);
-        while($dados = mysqli_fetch_assoc($resultado)){   
-            echo '<form action="../../../includes/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarNivel">';
-            echo '<input type="hidden" name="id" value="' . $dados['idnivelAtividade'] . '">';
-            echo '<label for="descricao">Descrição: </label>';
-            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricaoNivel'] . '" disabled>';
-            echo '<a href="../update/updateworklevel.php?id='. $dados['idnivelAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
-            echo '<br>';
-            echo '</form>';
-        }
+        include_once '../../../includes/classes/Conexao.php';
+        include_once '../../../includes/classes/Nivel_Atividade.php';
+        $categoria = new NivelAtividade();
+        $categoria->Read();
     }
 
     function listwork(){

@@ -1,18 +1,18 @@
 <?php
     session_start();
     function updateworklevel(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        $sql = "UPDATE nivelatividade SET descricaoNivel='$descricao' WHERE idnivelAtividade = '$id';";
+        require_once('./classes/Nivel_Atividade.php');
+        require_once('./classes/Conexao.php');
+        $nivel = new NivelAtividade();
+        $conexao = $nivel->getConexao();
+        $resultado = $nivel->Update($_POST['id'], $_POST['descricao']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworklevel.php');
+            echo $conexao->error;
         }
     }
     

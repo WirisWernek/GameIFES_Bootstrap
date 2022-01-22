@@ -1,17 +1,18 @@
 <?php
     session_start();
     function deleteworklevel(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $sql = "DELETE FROM nivelatividade WHERE idnivelAtividade = '$id';";
+        include_once './classes/Conexao.php';
+        include_once './classes/Nivel_Atividade.php';
+        $nivel = new NivelAtividade();
+        $conexao = $nivel->getConexao();
+        $resultado = $nivel->Delete($_POST['id']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Deletado com sucesso!";
             header('Location: ../users/teacher/list/listworklevel.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listworklevel.php');
+            echo $conexao->error;
         }
     }
     

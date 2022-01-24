@@ -35,9 +35,9 @@
     function deletework(){
         include_once './classes/Conexao.php';
         include_once './classes/Atividade.php';
-        $Atividade = new Atividade();
-        $conexao = $Atividade->getConexao();
-        $resultado = $Atividade->Delete($_POST['id']);
+        $atividade = new Atividade();
+        $conexao = $atividade->getConexao();
+        $resultado = $atividade->Delete($_POST['id']);
 
         if($resultado){
             $_SESSION['mensagem']= "Deletado com sucesso!";
@@ -46,34 +46,21 @@
             $_SESSION['mensagem']= "Erro ao deletar!";
             echo $conexao->error;
         }
-
-
-        // require_once './db_connection.php';
-        // $id = mysqli_escape_string($connect, $_POST['id']);
-        // $sql = "DELETE FROM atividade WHERE idatividade = '$id';";
-
-        // if(mysqli_query($connect, $sql)){
-        //     $_SESSION['mensagem']= "Deletado com sucesso!";
-        //     header('Location: ../users/teacher/list/listwork.php');
-        // }else{
-        //     $_SESSION['mensagem']= "Erro ao deletar!";
-        //     echo mysqli_error($connect);
-        //     // header('Location: ../users/teacher/list/listwork.php');
-        // }
     }
 
     function deleteuser(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $sql = "DELETE FROM usuario WHERE idusuario = '$id';";
+        include_once './classes/Conexao.php';
+        include_once './classes/Usuario.php';
+        $usuario = new Usuario();
+        $conexao = $usuario->getConexao();
+        $resultado = $usuario->Delete($_POST['id']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Deletado com sucesso!";
             header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao deletar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/admin/list/listusers.php');
+            echo $conexao->error;
         }
     }
     function deleteboard(){

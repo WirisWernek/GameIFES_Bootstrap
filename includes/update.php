@@ -1,8 +1,8 @@
 <?php
     session_start();
     function updateworklevel(){
-        require_once('./classes/Nivel_Atividade.php');
         require_once('./classes/Conexao.php');
+        require_once('./classes/Nivel_Atividade.php');
         $nivel = new NivelAtividade();
         $conexao = $nivel->getConexao();
         $resultado = $nivel->Update($_POST['id'], $_POST['descricao']);
@@ -17,8 +17,8 @@
     }
     
     function updateworkcategory(){
-        require_once('./classes/Categoria_Atividade.php');
         require_once('./classes/Conexao.php');
+        require_once('./classes/Categoria_Atividade.php');
         $categoria = new CategoriaAtividade();
         $conexao = $categoria->getConexao();
         $resultado = $categoria->Update($_POST['id'], $_POST['descricao']);
@@ -33,8 +33,8 @@
     }
 
     function updatework(){
-        require_once('./classes/Atividade.php');
         require_once('./classes/Conexao.php');
+        require_once('./classes/Atividade.php');
         $atividade = new Atividade();
         $conexao = $atividade->getConexao();
         $resultado = $atividade->Update($_POST['id'], $_POST['descricao'], $_POST['categoria'], $_POST['nivel']);
@@ -49,21 +49,18 @@
     }
     
     function updateuser(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $nome = mysqli_escape_string($connect, $_POST['nome']);
-        $login = mysqli_escape_string($connect, $_POST['login']);
-        $senha = mysqli_escape_string($connect, $_POST['senha']);
-        $perfilusuario = intval(mysqli_escape_string($connect, $_POST['perfilusuario']));
-        $sql = "UPDATE usuario SET nomeCompletoUsuario='$nome', `login`='$login', senha='$senha',perfilUsuarioID='$perfilusuario'  WHERE idusuario = '$id';";
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Usuario.php');
+        $usuario = new Usuario();
+        $conexao = $usuario->getConexao();
+        $resultado = $usuario->Update($_POST['id'], $_POST['nome'], $_POST['login'], $_POST['senha'], $_POST['perfilusuario']);
 
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/admin/list/listusers.php');
+            echo $conexao->error;
         }
     }
 

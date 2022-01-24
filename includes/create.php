@@ -49,21 +49,19 @@
     }
 
     function registeruser(){
-        require_once './db_connection.php';
-        $nome = mysqli_escape_string($connect, $_POST['nome']);
-        $login =  mysqli_escape_string($connect, $_POST['login']);
-        $senha =  mysqli_escape_string($connect, $_POST['senha']);
-        $perfilusuario =  intval(mysqli_escape_string($connect, $_POST['perfilusuario']));
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Usuario.php');
+        $usuario = new Usuario();
     
-        $sql = "INSERT INTO usuario(nomeCompletoUsuario, senha, `login`, dataCadastro, perfilUsuarioID) VALUES('$nome', '$senha', '$login', now(), '$perfilusuario');";
+        $conexao = $usuario->getConexao();
+        $resultado = $usuario->Create($_POST['nome'], $_POST['login'], $_POST['senha'], $_POST['perfilusuario']);
     
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/admin/list/listusers.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/admin/list/listusers.php');
+            echo $conexao->error;
         }
     }
 

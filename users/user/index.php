@@ -13,12 +13,13 @@
     <a href="./initnewwork.php">Nova Atividade</a>
     <a href="./finishedwork.php">Atividades Finalizadas</a>
     <?php
-        require_once '../../includes/classes/Atividade_Aluno.php';
         require_once '../../includes/classes/Conexao.php';
+        require_once '../../includes/classes/Atividade_Aluno.php';
         
         session_start();
+        $id = $_SESSION['id'];
         $atividades = new AtividadeAluno();
-        $resultado = $atividades->AtividadesEmAndamento();
+        $resultado = $atividades->AtividadesEmAndamento($id);
         
         while ($dados = $resultado->fetch_assoc()):
                 $data_inicio = new DateTime($dados['Inicio']);

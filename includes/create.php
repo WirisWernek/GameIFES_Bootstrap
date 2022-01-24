@@ -82,21 +82,18 @@
         }
     }
     function initializework(){
-        require_once './db_connection.php';
-        $idusuario = intval(mysqli_escape_string($connect, $_POST['idUsuario']));
-        $idatividade = intval(mysqli_escape_string($connect, $_POST['idAtividade']));
-        $tabuleiro = intval(mysqli_escape_string($connect, $_POST['tabuleiro']));
-        $descricao = mysqli_escape_string($connect, $_POST['descricao']);
-        
-        $sql = "INSERT INTO atividade_aluno(descricaoatividade, tabuleiroid, usuarioid, `status`, datainicio, atividadeid) VALUES('$descricao', '$tabuleiro','$idusuario', 'Iniciado', now() , '$idatividade');";
-        
-        if(mysqli_query($connect, $sql)){
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Atividade_Aluno.php');
+        $novaatividade = new AtividadeAluno();
+        $conexao = $novaatividade->getConexao();
+        $resultado = $novaatividade->Create($_POST['idUsuario'],  $_POST['idAtividade'], $_POST['tabuleiro'],$_POST['descricao']);
+    
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/user/index.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/user/index.php');
+            echo $conexao->error;
         }
     }
 

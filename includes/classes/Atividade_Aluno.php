@@ -43,36 +43,38 @@ class AtividadeAluno{
     public function getConexao(){
         return $this->conexao;
     }
+    public function Create($idUsuario, $idAtividade, $idTabuleiro, $descricao){
+        require_once './db_connection.php';
+        $this->usuario = intval($this->conexao->escape_string($idUsuario));
+        $this->atividade = intval($this->conexao->escape_string($idAtividade));
+        $this->tabuleiro = intval($this->conexao->escape_string($idTabuleiro));
+        $this->descricao = $this->conexao->escape_string($descricao);
+        
+        $sql = "INSERT INTO atividade_aluno(descricaoatividade, tabuleiroid, usuarioid, `status`, datainicio, atividadeid) VALUES('$this->descricao', '$this->tabuleiro','$this->usuario', 'Iniciado', now() , '$this->atividade');";
+        
+        return $this->conexao->query($sql);
+    }
     public function Delete($id){
-       
-        $sql = "UPDATE atividade_aluno SET `status`='Finalizado', datafim = now() WHERE idatividade_aluno = '$id';";
-    
-        if($this->conexao->query($sql)){
-            $_SESSION['mensagem']= "Atividade Finalizado com sucesso!";
-            header('Location: ./index.php');
-        }else{
-            $_SESSION['mensagem']= "Erro ao finalizar atividade!";
-            echo $this->conexao->error;
-        }
+        $this->id = intval($this->conexao->escape_string($id));
+        $sql = "UPDATE atividade_aluno SET `status`='Finalizado', datafim = now() WHERE idatividade_aluno = '$this->id';";
+        return $this->conexao->query($sql);
+        
     }
     public function NovaAtividade(){
         $sql = "call atividade();";
         $resultado = $this->conexao->query($sql);
         return $resultado;
     }
-    public function AtividadesEmAndamento(){
-        $id = $_SESSION['id'];
-        $sql = "call atividades_em_andamento('$id');";
-        $resultado = $this->conexao->query($sql);
-        return $resultado;
-    
-    }
-    public function AtividadesFinalizadas(){
-        $id = $_SESSION['id'];
-        $sql = "call atividades_finalizadas('$id');";
+    public function AtividadesEmAndamento($id){
+        $this->id = intval($this->conexao->escape_string($id));
+        $sql = "call atividades_em_andamento('$this->id');";
         $resultado = $this->conexao->query($sql);
         return $resultado;
     }
-
+    public function AtividadesFinalizadas($id){
+        $this->id = intval($this->conexao->escape_string($id));
+        $sql = "call atividades_finalizadas('$this->id');";
+        $resultado = $this->conexao->query($sql);
+        return $resultado;
+    }
 }
-?>

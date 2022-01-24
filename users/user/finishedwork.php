@@ -13,10 +13,10 @@
         session_start();
         require_once '../../includes/classes/Atividade_Aluno.php';
         require_once '../../includes/classes/Conexao.php';
-
+        $id = $_SESSION['id'];
         $atividades = new AtividadeAluno();
-        $resultado = $atividades->AtividadesFinalizadas();
-        while($dados =$resultado->fetch_assoc()):
+        $resultado = $atividades->AtividadesFinalizadas($id);
+        while($dados = $resultado->fetch_assoc()):
             $data_inicio = new DateTime($dados['Inicio']);
             $data_fim = new DateTime($dados['Fim']);
     ?>

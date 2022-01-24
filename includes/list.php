@@ -50,22 +50,10 @@
     }
 
     function listbackgroundboard(){
-        require_once '../../../includes/db_connection.php';
-        $sql = "call imagensTabuleiro();";
-        $resultado = mysqli_query($connect, $sql);
-        while($dados = mysqli_fetch_assoc($resultado)){  
-            echo '<form action="../../../includes/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarFundoTabuleiro">';
-            echo '<input type="hidden" name="id" value="' . $dados['ID'] . '">';
-            echo '<label for="url">URL: </label>';
-            echo '<input type="text" name="url" id="url" value="' . $dados['URL'] . '" disabled>';
-            echo '<label for="tipo">Tipo de Imagem: </label>';
-            echo '<input type="text" name="tipo" id="tipo" value="' . $dados['Tipo'] . '" disabled>';
-            echo '<a href="../update/updatebackgroundboard.php?id='. $dados['ID'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
-            echo '<br>';
-            echo '</form>';
-        }
+        require_once('../../../includes/classes/Conexao.php');
+        require_once('../../../includes/classes/Imagem_Tabuleiro.php');
+        $imagem = new ImagemTabuleiro();
+        $imagem->Read();
     }
     function  listimageboard(){
         require_once '../../../includes/db_connection.php';

@@ -98,19 +98,18 @@
     }
 
     function registerbackgroundboard(){
-        require_once './db_connection.php';
-        $url = mysqli_escape_string($connect, $_POST['url']);
-        $tipo = intval(mysqli_escape_string($connect, $_POST['tipo']));
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Imagem_Tabuleiro.php');
+        $imagem = new ImagemTabuleiro();
+        $conexao = $imagem->getConexao();
+        $resultado = $imagem->Create($_POST['url'], $_POST['tipo']);
     
-        $sql = "INSERT INTO imagenstabuleiro(urlImagem, tipoimagemid) VALUES('$url', '$tipo');";
-
-        if(mysqli_query($connect, $sql)){
+        if($resultado){
             $_SESSION['mensagem']= "Cadastrado com sucesso!";
             header('Location: ../users/teacher/list/listbackgroundboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao cadastrar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listbackgroundboard.php');
+            echo $conexao->error;
         }
     }
     function registerimageboard(){

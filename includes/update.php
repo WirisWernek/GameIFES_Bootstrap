@@ -81,19 +81,17 @@
         }
     }
     function updatebackgroundboard(){
-        require_once './db_connection.php';
-        $id = mysqli_escape_string($connect, $_POST['id']);
-        $url = mysqli_escape_string($connect, $_POST['url']);
-        $tipo = intval(mysqli_escape_string($connect, $_POST['tipo']));
-        $sql = "UPDATE imagenstabuleiro SET urlImagem='$url', tipoimagemid='$tipo' WHERE idimagenstabuleiro = '$id';";
-
-        if(mysqli_query($connect, $sql)){
+        require_once('./classes/Conexao.php');
+        require_once('./classes/Imagem_Tabuleiro.php');
+        $imagem = new ImagemTabuleiro();
+        $conexao = $imagem->getConexao();
+        $resultado = $imagem->Update($_POST['id'], $_POST['url'], $_POST['tipo']);
+        if($resultado){
             $_SESSION['mensagem']= "Atualizado com sucesso!";
             header('Location: ../users/teacher/list/listbackgroundboard.php');
         }else{
             $_SESSION['mensagem']= "Erro ao atualizar!";
-            echo mysqli_error($connect);
-            // header('Location: ../users/teacher/list/listbackgroundboard.php');
+            echo $conexao->error;
         }
     }
     function updateimageboard(){

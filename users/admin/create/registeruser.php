@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="../../../includes/create.php" method="post">
+    <form action="../../../actions/create.php" method="post">
         <h2>Novo Usuário</h2>
         <input type="hidden" name="opcao" value="criarUsuario">
         <label for="nome">Nome</label>

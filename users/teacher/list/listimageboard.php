@@ -12,7 +12,7 @@
 <body>
     <br><a href="../create/registerimageboard.php">Cadastrar Nova Imagem de Fundo</a>
     <?php
-    require_once '../../../includes/list.php';
+    require_once '../../../actions/list.php';
     listimageboard();
     ?>
 </body>

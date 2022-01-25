@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="../../../includes/update.php" method="post">
+    <form action="../../../actions/update.php" method="post">
         <?php
         require_once '../../../includes/db_connection.php';
 

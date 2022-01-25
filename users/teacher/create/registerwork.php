@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="../../../includes/create.php" method="post">
+    <form action="../../../actions/create.php" method="post">
         <input type="hidden" name="opcao" value="criarAtividade">
         <label for="descricao">Descrição: </label>
         <input type="text" name="descricao" id="descricao">

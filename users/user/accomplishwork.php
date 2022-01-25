@@ -17,7 +17,7 @@
     $sql = "SELECT * FROM atividade WHERE idatividade = $id;";
     $dados = mysqli_fetch_assoc(mysqli_query($connect, $sql));
     ?>
-    <form action="../../includes/create.php" method="post">
+    <form action="../../actions/create.php" method="post">
         <input type="hidden" name="opcao" value="iniciarAtividade">
         <input type="hidden" name="idAtividade" value="<?php echo $_GET['id']; ?>">
         <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['id']; ?>">

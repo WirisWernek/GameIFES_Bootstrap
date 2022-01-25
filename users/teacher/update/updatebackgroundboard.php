@@ -15,7 +15,7 @@ $data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
 </head>
 
 <body>
-    <form action="../../../includes/update.php" method="post">
+    <form action="../../../actions/update.php" method="post">
         <input type="hidden" name="opcao" value="atualizarFundoTabuleiro">
         <input type="hidden" name="id" value="<?php echo $data['idimagenstabuleiro']; ?>">
         <label for="url">URL: </label>

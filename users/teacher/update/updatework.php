@@ -17,7 +17,7 @@ $data = mysqli_fetch_assoc($query);
 </head>
 
 <body>
-    <form action="../../../includes/update.php" method="post">
+    <form action="../../../actions/update.php" method="post">
         <input type="hidden" name="opcao" value="atualizarAtividade">
         <input type="hidden" name="id" value="<?php echo $id ?>">
         <label for="descricao">Descrição: </label>

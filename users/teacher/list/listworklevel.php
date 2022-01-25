@@ -12,7 +12,7 @@
 <body>
     <br><a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
     <?php
-    require_once '../../../includes/list.php';
+    require_once '../../../actions/list.php';
     listlevel();
     ?>
 

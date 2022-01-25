@@ -53,7 +53,7 @@ class Tabuleiro
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
             $data = new DateTime($dados['dataCriacao']);
-            echo '<form action="../../../includes/delete.php" method="post">';
+            echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarTabuleiro">';
             echo '<input type="hidden" name="id" value="' . $dados['idtabuleiro'] . '">';
             echo '<label for="planta">Planta do Tabuleiro: </label>';

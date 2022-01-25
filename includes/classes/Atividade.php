@@ -1,44 +1,56 @@
 <?php
 
-class Atividade{
+class Atividade
+{
     private $id;
     private $descricao;
     private $categoria;
     private $nivel;
     private $conexao;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->conexao = Conexao::Conectar();
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
-    public function setId($id){
+    public function setId($id)
+    {
         $this->id = $id;
     }
-    public function getDescricao(){
+    public function getDescricao()
+    {
         return $this->descricao;
     }
-    public function setDescricao($descricao){
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
     }
-    public function getCategoria(){
+    public function getCategoria()
+    {
         return $this->categoria;
     }
-    public function setCategoria($categoria){
+    public function setCategoria($categoria)
+    {
         $this->categoria = $categoria;
     }
-    public function getNivel(){
+    public function getNivel()
+    {
         return $this->nivel;
     }
-    public function setNivel($nivel){
+    public function setNivel($nivel)
+    {
         $this->nivel = $nivel;
     }
-    public function getConexao(){
+    public function getConexao()
+    {
         return $this->conexao;
     }
 
-    public function Create($descricao, $categoria, $nivel){
+    public function Create($descricao, $categoria, $nivel)
+    {
         $this->descricao = $this->conexao->escape_string($descricao);
         $this->categoria = $this->conexao->escape_string($categoria);
         $this->nivel = $this->conexao->escape_string($nivel);
@@ -46,11 +58,12 @@ class Atividade{
         return $this->conexao->query($sql);
     }
 
-    public function Read(){
+    public function Read()
+    {
         $sql = "call atividade();";
         $resultado = $this->conexao->query($sql);
-        while($dados = $resultado->fetch_assoc()){   
-            echo '<form action="../../../includes/delete.php" method="post">';
+        while ($dados = $resultado->fetch_assoc()) {
+            echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarAtividade">';
             echo '<input type="hidden" name="id" value="' . $dados['IdAtividade'] . '">';
             echo '<label for="descricao">Descrição: </label>';
@@ -59,25 +72,27 @@ class Atividade{
             echo '<input type="text" name="categoria" id="categoria" value="' . $dados['Categoria'] . '" disabled>';
             echo '<label for="nivel">Nível: </label>';
             echo '<input type="text" name="nivel" id="nivel" value="' . $dados['Nivel'] . '" disabled>';
-            echo '<a href="../update/updatework.php?id='. $dados['IdAtividade'] . '" >Editar</a>';
+            echo '<a href="../update/updatework.php?id=' . $dados['IdAtividade'] . '" >Editar</a>';
             echo '<button type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }
-   }
+    }
 
-   public function Update($id, $descricao, $categoria, $nivel){
+    public function Update($id, $descricao, $categoria, $nivel)
+    {
         $this->id = $this->conexao->escape_string($id);
         $this->descricao = $this->conexao->escape_string($descricao);
         $this->categoria = $this->conexao->escape_string($categoria);
         $this->nivel = $this->conexao->escape_string($nivel);
         $sql = "UPDATE atividade SET descricacao='$this->descricao', categoriaatividadeid='$this->categoria', nivelatividadeid='$this->nivel' WHERE idatividade = '$this->id';";
         return $this->conexao->query($sql);
-   }
+    }
 
-   public function Delete($id){
+    public function Delete($id)
+    {
         $this->id = $this->conexao->escape_string($id);
         $sql = "DELETE FROM atividade WHERE idatividade = '$id';";
         return $this->conexao->query($sql);
-   }
+    }
 }

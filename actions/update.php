@@ -2,8 +2,8 @@
 session_start();
 function updateworklevel()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Nivel_Atividade.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Nivel_Atividade.php');
     $nivel = new NivelAtividade();
     $conexao = $nivel->getConexao();
     $resultado = $nivel->Update($_POST['id'], $_POST['descricao']);
@@ -19,8 +19,8 @@ function updateworklevel()
 
 function updateworkcategory()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Categoria_Atividade.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Categoria_Atividade.php');
     $categoria = new CategoriaAtividade();
     $conexao = $categoria->getConexao();
     $resultado = $categoria->Update($_POST['id'], $_POST['descricao']);
@@ -36,8 +36,8 @@ function updateworkcategory()
 
 function updatework()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Atividade.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Atividade.php');
     $atividade = new Atividade();
     $conexao = $atividade->getConexao();
     $resultado = $atividade->Update($_POST['id'], $_POST['descricao'], $_POST['categoria'], $_POST['nivel']);
@@ -53,8 +53,8 @@ function updatework()
 
 function updateuser()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Usuario.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Usuario.php');
     $usuario = new Usuario();
     $conexao = $usuario->getConexao();
     $resultado = $usuario->Update($_POST['id'], $_POST['nome'], $_POST['login'], $_POST['senha'], $_POST['perfilusuario']);
@@ -70,8 +70,8 @@ function updateuser()
 
 function updateboard()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Tabuleiro.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Tabuleiro.php');
     $tabuleiro = new Tabuleiro();
     $conexao = $tabuleiro->getConexao();
     $resultado = $tabuleiro->Update($_POST['id'], $_POST['descricao'], $_POST['planta']);
@@ -85,8 +85,8 @@ function updateboard()
 }
 function updatebackgroundboard()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Imagem_Tabuleiro.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Imagem_Tabuleiro.php');
     $imagem = new ImagemTabuleiro();
     $conexao = $imagem->getConexao();
     $resultado = $imagem->Update($_POST['id'], $_POST['url'], $_POST['tipo']);
@@ -100,8 +100,8 @@ function updatebackgroundboard()
 }
 function updateimageboard()
 {
-    require_once('./classes/Conexao.php');
-    require_once('./classes/Imagem_Tabuleiro_Imagem.php');
+    require_once('../includes/classes/Conexao.php');
+    require_once('../includes/classes/Imagem_Tabuleiro_Imagem.php');
     $imagemTabuleiro = new ImagemTabuleiroImagem();
     $conexao = $imagemTabuleiro->getConexao();
     $resultado = $imagemTabuleiro->Update($_POST['id'], $_POST['imagem'], $_POST['tabuleiro'],  $_POST['posicao']);

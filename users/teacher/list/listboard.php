@@ -12,7 +12,7 @@
 <body>
     <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
     <?php
-    require_once '../../../includes/list.php';
+    require_once '../../../actions/list.php';
     listboard();
     ?>
 </body>

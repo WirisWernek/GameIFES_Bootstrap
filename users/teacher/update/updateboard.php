@@ -15,7 +15,7 @@ $resultado = mysqli_fetch_assoc(mysqli_query($connect, $sql));
 </head>
 
 <body>
-    <form action="../../../includes/update.php" method="post">
+    <form action="../../../actions/update.php" method="post">
         <input type="hidden" name="opcao" value="atualizarTabuleiro">
         <input type="hidden" name="id" value="<?php echo $resultado['idtabuleiro']; ?>">
         <label for="planta">Planta do Tabuleiro: </label>

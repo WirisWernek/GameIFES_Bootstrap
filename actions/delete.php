@@ -2,8 +2,8 @@
 session_start();
 function deleteworklevel()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Nivel_Atividade.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Nivel_Atividade.php';
     $nivel = new NivelAtividade();
     $conexao = $nivel->getConexao();
     $resultado = $nivel->Delete($_POST['id']);
@@ -19,8 +19,8 @@ function deleteworklevel()
 
 function deleteworkcategory()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Categoria_Atividade.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Categoria_Atividade.php';
     $categoria = new CategoriaAtividade();
     $conexao = $categoria->getConexao();
     $resultado = $categoria->Delete($_POST['id']);
@@ -36,8 +36,8 @@ function deleteworkcategory()
 
 function deletework()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Atividade.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Atividade.php';
     $atividade = new Atividade();
     $conexao = $atividade->getConexao();
     $resultado = $atividade->Delete($_POST['id']);
@@ -53,8 +53,8 @@ function deletework()
 
 function deleteuser()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Usuario.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Usuario.php';
     $usuario = new Usuario();
     $conexao = $usuario->getConexao();
     $resultado = $usuario->Delete($_POST['id']);
@@ -69,8 +69,8 @@ function deleteuser()
 }
 function deleteboard()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Tabuleiro.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Tabuleiro.php';
     $tabuleiro = new Tabuleiro();
     $conexao = $tabuleiro->getConexao();
     $resultado = $tabuleiro->Delete($_POST['id']);
@@ -85,8 +85,8 @@ function deleteboard()
 }
 function deletebackgroundboard()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Imagem_Tabuleiro.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Imagem_Tabuleiro.php';
     $imagem = new ImagemTabuleiro();
     $conexao = $imagem->getConexao();
     $resultado = $imagem->Delete($_POST['id']);
@@ -101,8 +101,8 @@ function deletebackgroundboard()
 }
 function deleteimageboard()
 {
-    include_once './classes/Conexao.php';
-    include_once './classes/Imagem_Tabuleiro_Imagem.php';
+    include_once '../includes/classes/Conexao.php';
+    include_once '../includes/classes/Imagem_Tabuleiro_Imagem.php';
     $imagemTabuleiro = new ImagemTabuleiroImagem();
     $conexao = $imagemTabuleiro->getConexao();
     $resultado = $imagemTabuleiro->Delete($_POST['id']);

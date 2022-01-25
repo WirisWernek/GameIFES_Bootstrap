@@ -12,7 +12,7 @@
 <body>
     <a href="../create/registeruser.php">Cadastrar Novo Usuário</a>
     <?php
-    require_once '../../../includes/list.php';
+    require_once '../../../actions/list.php';
     listusers();
     ?>
 

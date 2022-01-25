@@ -43,7 +43,7 @@ class CategoriaAtividade
         $sql = "SELECT * FROM categoriaatividade";
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
-            echo '<form action="../../../includes/delete.php" method="post">';
+            echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarCategoria">';
             echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
             echo '<label for="descricao">Descrição: </label>';

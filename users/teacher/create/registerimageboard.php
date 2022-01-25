@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="../../../includes/create.php" method="post">
+    <form action="../../../actions/create.php" method="post">
         <input type="hidden" name="opcao" value="criarImagemTabuleiro">
         <label for="url">URL: </label>
         <select name="url" id="url">

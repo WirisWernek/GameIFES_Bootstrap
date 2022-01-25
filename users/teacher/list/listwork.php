@@ -13,7 +13,7 @@
     <main>
         <br><a href='../create/registerwork.php'>Cadastrar Atividade</a>
         <?php
-        require_once '../../../includes/list.php';
+        require_once '../../../actions/list.php';
         listwork();
         ?>
         <main>

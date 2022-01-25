@@ -59,5 +59,3 @@ class NivelAtividade{
         return $this->conexao->query($sql);
    }
 }
-    
-?>

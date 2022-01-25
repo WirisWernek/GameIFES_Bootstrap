@@ -46,4 +46,3 @@ if(isset($_POST['btn-login'])){
         header('Location: ../index.php');
     }
 }
-?>

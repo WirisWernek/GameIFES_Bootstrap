@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="../../../styles/main.css">
     <title>Gerenciar Tabuleiros</title>
 </head>
+
 <body>
-        <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
-        <?php
-        require_once '../../../includes/list.php';
-        listboard();
-        ?>
+    <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
+    <?php
+    require_once '../../../includes/list.php';
+    listboard();
+    ?>
 </body>
+
 </html>

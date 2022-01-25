@@ -81,5 +81,3 @@ class Atividade{
         return $this->conexao->query($sql);
    }
 }
-    
-?>

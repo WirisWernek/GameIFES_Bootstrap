@@ -138,5 +138,3 @@
             echo "Não foi possível realizar a operação!";
             break;
     }
-
-?>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,21 +8,22 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <title>Nova Atividade</title>
 </head>
+
 <body>
     <h1>Atividades</h1>
     <?php
-        session_start();
-        require_once '../../includes/classes/Atividade_Aluno.php';
-        require_once '../../includes/classes/Conexao.php';
+    session_start();
+    require_once '../../includes/classes/Atividade_Aluno.php';
+    require_once '../../includes/classes/Conexao.php';
 
-        $novaatividade = new AtividadeAluno();
-        $resultado = $novaatividade->NovaAtividade();
-        $i = 0;
-        while($dados =$resultado->fetch_assoc()):
+    $novaatividade = new AtividadeAluno();
+    $resultado = $novaatividade->NovaAtividade();
+    $i = 0;
+    while ($dados = $resultado->fetch_assoc()) :
     ?>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Atividade <?php echo ($i+1); ?></h5>
+                <h5 class="card-title">Atividade <?php echo ($i + 1); ?></h5>
                 <h6 class="card-subtitle mb-2 text-muted">Categoria: <?php echo $dados['Categoria']; ?> </h6>
                 <h6 class="card-subtitle mb-2 text-muted">Dificuldade: <?php echo $dados['Nivel']; ?> </h6>
                 <p class="card-text">Descrição: <?php echo $dados['Descricao']; ?></p>
@@ -30,7 +32,8 @@
         </div>
     <?php
         $i++;
-        endwhile;
+    endwhile;
     ?>
 </body>
+
 </html>

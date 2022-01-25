@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,23 @@
     <link rel="stylesheet" href="../../../styles/main.css">
     <title>Atividades</title>
 </head>
+
 <body>
     <main>
-    <h1>Atividades Em Andamento</h1>
-    <a href="./initnewwork.php">Nova Atividade</a>
-    <a href="./finishedwork.php">Atividades Finalizadas</a>
-    <?php
+        <h1>Atividades Em Andamento</h1>
+        <a href="./initnewwork.php">Nova Atividade</a>
+        <a href="./finishedwork.php">Atividades Finalizadas</a>
+        <?php
         require_once '../../includes/classes/Conexao.php';
         require_once '../../includes/classes/Atividade_Aluno.php';
-        
+
         session_start();
         $id = $_SESSION['id'];
         $atividades = new AtividadeAluno();
         $resultado = $atividades->AtividadesEmAndamento($id);
-        
-        while ($dados = $resultado->fetch_assoc()):
-                $data_inicio = new DateTime($dados['Inicio']);
+
+        while ($dados = $resultado->fetch_assoc()) :
+            $data_inicio = new DateTime($dados['Inicio']);
         ?>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
@@ -34,9 +36,10 @@
                     <a href="./endwork.php?id=<?php echo $dados['ID']; ?>" class="card-link">Finalizar</a>
                 </div>
             </div>
-		<?php
+        <?php
         endwhile;
         ?>
     </main>
 </body>
+
 </html>

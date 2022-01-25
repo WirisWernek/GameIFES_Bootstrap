@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,30 @@
     <link rel="stylesheet" href="../../../styles/main.css">
     <title>Novo Usuário</title>
 </head>
+
 <body>
     <form action="../../../includes/create.php" method="post">
         <h2>Novo Usuário</h2>
         <input type="hidden" name="opcao" value="criarUsuario">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" placeholder="Nome" required ><br>
+        <input type="text" name="nome" id="nome" placeholder="Nome" required><br>
         <label for="login">Login</label>
-        <input type="text" name="login" id="login" placeholder="Nome De Usuário" required ><br>
+        <input type="text" name="login" id="login" placeholder="Nome De Usuário" required><br>
         <label for="senha">Senha</label>
-        <input type="password" name="senha" id="senha" placeholder="Senha" required ><br>
+        <input type="password" name="senha" id="senha" placeholder="Senha" required><br>
         <label for="perfilusuario">Perfil do Usuário</label>
         <select name="perfilusuario" id="perfilusuario">
             <option value="">Selecione um valor</option>
             <?php
-                require_once '../../../includes/db_connection.php';
-                $sql = "SELECT * FROM perfilusuario";
-                $resultado = mysqli_query($connect, $sql);
-                while($dados = mysqli_fetch_assoc($resultado)){   
-                    echo '<option value="' . $dados['idPerfilUsuario'] . '">' . $dados['descricao'] . '</option>';
-                } 
-            ?>  
-        <input type="submit" value="Cadastrar"><br><br>
+            require_once '../../../includes/db_connection.php';
+            $sql = "SELECT * FROM perfilusuario";
+            $resultado = mysqli_query($connect, $sql);
+            while ($dados = mysqli_fetch_assoc($resultado)) {
+                echo '<option value="' . $dados['idPerfilUsuario'] . '">' . $dados['descricao'] . '</option>';
+            }
+            ?>
+            <input type="submit" value="Cadastrar"><br><br>
     </form>
 </body>
-</html>
 
+</html>

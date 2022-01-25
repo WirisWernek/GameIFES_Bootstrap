@@ -1,16 +1,16 @@
 <?php
 session_start();
-require_once '../includes/db_connection.php';
-if(isset($_POST['btn-login'])){
-    $login =  mysqli_escape_string($connect, $_POST['login']);
-    $senha =  mysqli_escape_string($connect, $_POST['senha']);
-    
+require_once '../includes/classes/Conexao.php';
+if (isset($_POST['btn-login'])) {
+    $conexao = Conexao::Conectar();
+    $login = $conexao->escape_string($_POST['login']);
+    $senha = $conexao->escape_string($_POST['senha']);
     $sql = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha';";
 
-    if($resultado = mysqli_query($connect, $sql)){
-        if(mysqli_num_rows($resultado) > 0){
-            $dados = mysqli_fetch_assoc($resultado);
-            switch($dados['perfilUsuarioID']){
+    if ($resultado = $conexao->query($sql)) {
+        if ($resultado->num_rows > 0) {
+            $dados = $resultado->fetch_assoc();
+            switch ($dados['perfilUsuarioID']) {
                 case '1':
                     $_SESSION['id'] = $dados['idusuario'];
                     $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
@@ -37,12 +37,12 @@ if(isset($_POST['btn-login'])){
                     header('Location: ../index.php');
                     break;
             }
-        }else{
-            $_SESSION['mensagem']= "Senha ou login incorretos!";
+        } else {
+            $_SESSION['mensagem'] = "Senha ou login incorretos!";
             header('Location: ../index.php');
         }
-    }else{
-        $_SESSION['mensagem']= "Nenhuma informação foi recebida!";
+    } else {
+        $_SESSION['mensagem'] = "Nenhuma informação foi recebida!";
         header('Location: ../index.php');
     }
 }

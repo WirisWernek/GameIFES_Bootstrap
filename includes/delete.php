@@ -101,17 +101,18 @@ function deletebackgroundboard()
 }
 function deleteimageboard()
 {
-    require_once './db_connection.php';
-    $id = mysqli_escape_string($connect, $_POST['id']);
-    $sql = "DELETE FROM tabuleiro_imagenstabuleiro WHERE idtabuleiro_imagenstabuleiro = '$id';";
+    include_once './classes/Conexao.php';
+    include_once './classes/Imagem_Tabuleiro_Imagem.php';
+    $imagemTabuleiro = new ImagemTabuleiroImagem();
+    $conexao = $imagemTabuleiro->getConexao();
+    $resultado = $imagemTabuleiro->Delete($_POST['id']);
 
-    if (mysqli_query($connect, $sql)) {
+    if ($resultado) {
         $_SESSION['mensagem'] = "Deletado com sucesso!";
         header('Location: ../users/teacher/list/listimageboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao deletar!";
-        echo mysqli_error($connect);
-        // header('Location: ../users/teacher/list/listimageboard.php');
+        echo $conexao->error;
     }
 }
 

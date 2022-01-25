@@ -100,20 +100,17 @@ function updatebackgroundboard()
 }
 function updateimageboard()
 {
-    require_once './db_connection.php';
-    $id = intval(mysqli_escape_string($connect, $_POST['id']));
-    $imagem = intval(mysqli_escape_string($connect, $_POST['imagem']));
-    $tabuleiro = intval(mysqli_escape_string($connect, $_POST['tabuleiro']));
-    $posicao = intval(mysqli_escape_string($connect, $_POST['posicao']));
-    $sql = "UPDATE tabuleiro_imagenstabuleiro SET tabuleiroID='$tabuleiro', imagenstabuleiroID='$imagem',  posicaoTabuleiro='$posicao' WHERE idtabuleiro_imagenstabuleiro = '$id';";
-
-    if (mysqli_query($connect, $sql)) {
+    require_once('./classes/Conexao.php');
+    require_once('./classes/Imagem_Tabuleiro_Imagem.php');
+    $imagemTabuleiro = new ImagemTabuleiroImagem();
+    $conexao = $imagemTabuleiro->getConexao();
+    $resultado = $imagemTabuleiro->Update($_POST['id'], $_POST['imagem'], $_POST['tabuleiro'],  $_POST['posicao']);
+    if ($resultado) {
         $_SESSION['mensagem'] = "Atualizado com sucesso!";
         header('Location: ../users/teacher/list/listimageboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao atualizar!";
-        echo mysqli_error($connect);
-        // header('Location: ../users/teacher/list/listimageboard.php');
+        echo $conexao->error;
     }
 }
 

@@ -1,9 +1,10 @@
 <?php
-require_once '../../../includes/db_connection.php';
-$id = $_GET['id'];
+require_once '../../../includes/classes/Conexao.php';
+$conexao = Conexao::Conectar();
+$id = $conexao->escape_string($_GET['id']);
 $consulta = "SELECT * FROM usuario where idusuario = '$id'";
-$query = mysqli_query($connect, $consulta);
-$data = mysqli_fetch_assoc($query);
+$query = $conexao->query($consulta);
+$data = $query->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +34,11 @@ $data = mysqli_fetch_assoc($query);
         <select name="perfilusuario" id="perfilusuario">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM perfilusuario";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idPerfilUsuario'] == $data['perfilUsuarioID']) {
                     echo '<option value="' . $dados['idPerfilUsuario'] . '" selected ="selected">' . $dados['descricao'] . '</option>';
                 } else {

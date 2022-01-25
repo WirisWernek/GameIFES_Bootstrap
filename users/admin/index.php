@@ -1,8 +1,8 @@
 <?php
-// session_start();
-// if($_SESSION['tipo'] != '1'){
-//     header('Location: ../../../index.php');
-// }
+session_start();
+if ($_SESSION['tipo'] != '1') {
+    header('Location: ../../../index.php');
+}
 ?>
 
 <!DOCTYPE html>

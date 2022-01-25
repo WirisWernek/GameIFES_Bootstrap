@@ -131,8 +131,7 @@ function registerimageboard()
         header('Location: ../users/teacher/list/listimageboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao cadastrar!";
-        echo mysqli_error($connect);
-        // header('Location: ../users/teacher/list/listimageboard.php');
+        echo $conexao->error;
     }
 }
 

@@ -65,7 +65,6 @@ class ImagemTabuleiroImagem
     }
     public function Update($id, $imagem, $tabuleiro, $posicao)
     {
-        require_once './db_connection.php';
         $this->id = intval($this->conexao->escape_string($id));
         $this->imagem = intval($this->conexao->escape_string($imagem));
         $this->tabuleiro = intval($this->conexao->escape_string($tabuleiro));

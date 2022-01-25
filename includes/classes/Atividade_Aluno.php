@@ -56,7 +56,6 @@ class AtividadeAluno
     }
     public function Create($idUsuario, $idAtividade, $idTabuleiro, $descricao)
     {
-        require_once './db_connection.php';
         $this->usuario = intval($this->conexao->escape_string($idUsuario));
         $this->atividade = intval($this->conexao->escape_string($idAtividade));
         $this->tabuleiro = intval($this->conexao->escape_string($idTabuleiro));

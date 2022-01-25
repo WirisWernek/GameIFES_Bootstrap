@@ -43,7 +43,7 @@ class Tabuleiro
         $this->planta = $this->conexao->escape_string($planta);
         $this->usuario = $_SESSION['id'];
 
-        $sql = "INSERT INTO tabuleiro(descricao, plantaTabuleiro, dataCriacao, usuarioid) VALUES('$this->descricao', '$this->planta', now(), $this->usuario);";
+        $sql = "INSERT INTO tabuleiro(descricao, plantaTabuleiro, dataCriacao, usuario) VALUES('$this->descricao', '$this->planta', now(),' $this->usuario');";
 
         return $this->conexao->query($sql);
     }

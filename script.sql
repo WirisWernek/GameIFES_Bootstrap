@@ -93,6 +93,7 @@ CREATE TABLE IF NOT EXISTS `softedu`.`tabuleiro` (
   `plantaTabuleiro` VARCHAR(1000) NULL DEFAULT NULL COMMENT '',
   `descricao` VARCHAR(50) NOT NULL COMMENT '',
   `dataCriacao` DATE NULL DEFAULT NULL COMMENT '',
+  `usuario` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idtabuleiro`)  COMMENT '')
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -206,13 +207,13 @@ in id int)
 begin
 		select atividade_aluno.idatividade_aluno as ID,
         atividade_aluno.descricaoatividade as Descricao,
-		atividade_aluno.`status` as `Status`,
+		    atividade_aluno.`status` as `Status`,
         atividade_aluno.datainicio as Inicio,
         atividade_aluno.atividadeid as IdAtividade,
         tabuleiro.plantaTabuleiro as Tabuleiro
         from atividade_aluno inner join tabuleiro
         on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
-        where usuarioid = id and `Status` != "Finalizado";
+        where atividade_aluno.usuarioid = id and `Status` != "Finalizado";
     end
 $$
 
@@ -222,14 +223,14 @@ in id int)
 begin
 		select atividade_aluno.idatividade_aluno as ID,
         atividade_aluno.descricaoatividade as Descricao,
-		atividade_aluno.`status` as `Status`,
+		    atividade_aluno.`status` as `Status`,
         atividade_aluno.datainicio as Inicio,
         atividade_aluno.datafim as Fim,
         atividade_aluno.atividadeid as IdAtividade,
         tabuleiro.plantaTabuleiro as Tabuleiro
         from atividade_aluno inner join tabuleiro
         on atividade_aluno.tabuleiroid = tabuleiro.idtabuleiro
-        where usuarioid = id and `Status` = "Finalizado";
+        where atividade_aluno.usuarioid = id and `Status` = "Finalizado";
     end
 $$
 

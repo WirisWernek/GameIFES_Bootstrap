@@ -19,13 +19,13 @@
         require_once '../../includes/classes/Atividade_Aluno.php';
 
         session_start();
-        $id = $_SESSION['id'];
         $atividades = new AtividadeAluno();
-        $resultado = $atividades->AtividadesEmAndamento($id);
+        $resultado = $atividades->AtividadesEmAndamento($_SESSION['id']);
 
         while ($dados = $resultado->fetch_assoc()) :
             $data_inicio = new DateTime($dados['Inicio']);
         ?>
+            <hr>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
@@ -39,6 +39,7 @@
         <?php
         endwhile;
         ?>
+        <hr>
     </main>
 </body>
 

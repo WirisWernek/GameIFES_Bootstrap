@@ -22,6 +22,7 @@
         $data_inicio = new DateTime($dados['Inicio']);
         $data_fim = new DateTime($dados['Fim']);
     ?>
+        <hr>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Atividade: <?php echo $dados['Descricao']; ?></h5>
@@ -34,6 +35,7 @@
     <?php
     endwhile;
     ?>
+    <hr>
 </body>
 
 </html>

@@ -284,6 +284,24 @@ begin
 end
 $$
 
+use softedu;
+
+Delimiter $$
+create procedure usuarios()
+begin 
+	select usuario.idusuario,
+    usuario.nomeCompletoUsuario,
+    usuario.login,
+    usuario.dataCadastro,
+    perfilusuario.descricao,
+    historicoacessos.hora_data,
+    historicoacessos.tempoacesso
+    from usuario 
+    inner join historicoacessos on usuario.idhistoricoacessos = historicoacessos.idhistoricoacessos 
+    inner join perfilusuario on usuario.perfilUsuarioID = perfilusuario.idPerfilUsuario;
+end
+$$
+
 -- Exemplos de Chamadas das Procedures
 -- call atividade();
 -- call atividades_em_andamento(3);
@@ -291,3 +309,4 @@ $$
 -- call imagensTabuleiro();
 -- call tabuleiro_imagem();
 -- call set_tempo_acesso(1);
+-- call usuarios();

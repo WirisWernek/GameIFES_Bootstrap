@@ -56,7 +56,7 @@ class Usuario
     }
     public function Read()
     {
-        $sql = "SELECT * FROM usuario";
+        $sql = "call usuarios();";
         $resultado = $this->conexao->query($sql);
         echo '<table>
             <thead>
@@ -64,23 +64,28 @@ class Usuario
                     <th>ID</th>
                     <th >Nome</th>
                     <th>Login</th>
-                    <th>Data de Cadastro</th>
                     <th>Nível</th>
+                    <th>Data de Cadastro</th>
+                    <th>Último Acesso</th>
+                    <th>Tempo Logado</th>
                     <th colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>';
         while ($dados = $resultado->fetch_assoc()) {
-            $data = new DateTime($dados['dataCadastro']);
+            $dataCadastro = new DateTime($dados['dataCadastro']);
+            $dataLogin = new DateTime($dados['hora_data']);
             echo '<tr>';
             echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarUsuario">';
             echo '<input type="hidden" name="id" value="' . $dados['idusuario'] . '">';
             echo '<td>' . $dados['idusuario'] . '</td>';
-            echo '<td >' . mb_strimwidth($dados['nomeCompletoUsuario'], 0, 15, "...") . '</td>';
+            echo '<td>' . mb_strimwidth($dados['nomeCompletoUsuario'], 0, 15, "...") . '</td>';
             echo '<td>' . $dados['login'] . '</td>';
-            echo "<td>" . $data->format('d/m/Y') . "</td>";
-            echo '<td>' . $dados['perfilUsuarioID'] . '</td>';
+            echo '<td>' . $dados['descricao'] . '</td>';
+            echo "<td>" . $dataCadastro->format('d/m/Y') . "</td>";
+            echo '<td>' . $dataLogin->format('d/m/Y') . '</td>';
+            echo '<td>' . $dados['tempoacesso'] . '</td>';
             echo '<td><a href="../update/updateuser.php?id=' . $dados['idusuario'] . '" >Editar</a>';
             echo '<td><button type="submit" >Excluir</button>';
             echo '</form>';

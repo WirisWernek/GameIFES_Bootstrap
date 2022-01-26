@@ -12,10 +12,12 @@
 <body>
     <?php
     session_start();
-    require_once '../../includes/db_connection.php';
-    $id = intval($_GET['id']);
-    $sql = "SELECT * FROM atividade WHERE idatividade = $id;";
-    $dados = mysqli_fetch_assoc(mysqli_query($connect, $sql));
+    require_once '../../includes/classes/Conexao.php';
+    $conexao = Conexao::Conectar();
+    $id = intval($conexao->escape_string($_GET['id']));
+    $sql = "SELECT * FROM atividade WHERE idatividade = '$id';";
+    $resultado = $conexao->query($sql);
+    $dados = $resultado->fetch_assoc();
     ?>
     <form action="../../actions/create.php" method="post">
         <input type="hidden" name="opcao" value="iniciarAtividade">
@@ -27,10 +29,11 @@
         <select name="tabuleiro">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../includes/db_connection.php';
+            require_once '../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM tabuleiro";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo '<option value="' . $dados['idtabuleiro'] . '">' . $dados['descricao'] . '</option>';
             }
             ?>

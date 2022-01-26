@@ -14,7 +14,6 @@ class AtividadeAluno
 
     public function __construct()
     {
-        $this->usuario = $_SESSION['id'];
         $this->conexao = Conexao::Conectar();
     }
 

@@ -191,7 +191,7 @@ CREATE INDEX `tabuleiro_imagenstabuleiro_imgstabuleiro_idx` ON `softedu`.`tabule
 DROP TABLE IF EXISTS `softedu`.`historicoacessos` ;
 
 CREATE TABLE `softedu`.`historicoacessos` (
-  `idhistoricoacessos` INT NOT NULL AUTO_INCREMENT,
+  `idhistoricoacessos` INT NOT NULL,
   `hora_data` DATETIME NOT NULL,
   `tempoacesso` TIME NULL,
   PRIMARY KEY (`idhistoricoacessos`));
@@ -270,9 +270,24 @@ begin
     end
 $$
 
+DELIMITER $$
+create procedure set_tempo_acesso(
+in id int)
+begin 
+	SELECT @inicio := hora_data, @final := hora_data_final
+	FROM historicoacessos
+	WHERE idhistoricoacessos=id;
+
+	SELECT @diferenca := timediff(@final, @inicio);
+	UPDATE historicoacessos SET tempoacesso=@diferenca WHERE idhistoricoacessos=id;
+
+end
+$$
+
 -- Exemplos de Chamadas das Procedures
 -- call atividade();
 -- call atividades_em_andamento(3);
 -- call atividades_finalizadas(3);
 -- call imagensTabuleiro();
 -- call tabuleiro_imagem();
+-- call set_tempo_acesso(1);

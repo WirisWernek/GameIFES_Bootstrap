@@ -27,7 +27,8 @@ if ($option == "Login") {
             break;
     }
 } else if ($option == "Logout") {
-    $acesso->Logout($_SESSION['id']);
+    $id = intval($_SESSION['id']);
+    $acesso->Logout($id);
     $_SESSION['id'] = "";
     $_SESSION['nome'] = "";
     $_SESSION['tipo'] = "";

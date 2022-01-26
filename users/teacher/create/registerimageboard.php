@@ -16,10 +16,11 @@
         <select name="url" id="url">
             <option>Selecione uma imagem</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM imagenstabuleiro";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo "<option value='" . $dados['idimagenstabuleiro'] . "'>" . $dados['urlImagem'] . "</option>";
             }
             ?>
@@ -28,10 +29,11 @@
         <select name="tabuleiro" id="tabuleiro">
             <option>Selecione um tabuleiro</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM tabuleiro";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo "<option value='" . $dados['idtabuleiro'] . "'>" . $dados['descricao'] . "</option>";
             }
             ?>

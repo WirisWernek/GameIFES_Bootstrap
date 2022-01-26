@@ -1,8 +1,10 @@
 <?php
-require_once '../../../includes/db_connection.php';
-$id = mysqli_escape_string($connect, $_GET['id']);
-$sql = "SELECT * FROM tabuleiro WHERE idtabuleiro = $id;";
-$resultado = mysqli_fetch_assoc(mysqli_query($connect, $sql));
+require_once '../../../includes/classes/Conexao.php';
+$conexao = Conexao::Conectar();
+$id = $conexao->escape_string($_GET['id']);
+$sql = "SELECT * FROM tabuleiro WHERE idtabuleiro = '$id';";
+$resultado = $conexao->query($sql);
+$dados = $resultado->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,12 +19,12 @@ $resultado = mysqli_fetch_assoc(mysqli_query($connect, $sql));
 <body>
     <form action="../../../actions/update.php" method="post">
         <input type="hidden" name="opcao" value="atualizarTabuleiro">
-        <input type="hidden" name="id" value="<?php echo $resultado['idtabuleiro']; ?>">
+        <input type="hidden" name="id" value="<?php echo $dados['idtabuleiro']; ?>">
         <label for="planta">Planta do Tabuleiro: </label>
-        <input type="text" name="planta" id="planta" value="<?php echo $resultado['plantaTabuleiro']; ?>">
+        <input type="text" name="planta" id="planta" value="<?php echo $dados['plantaTabuleiro']; ?>">
 
         <label for="descricao">Descrição: </label>
-        <input type="text" name="descricao" id="descricao" value="<?php echo $resultado['descricao']; ?>">
+        <input type="text" name="descricao" id="descricao" value="<?php echo $dados['descricao']; ?>">
         <input type="submit" value="Atualizar">
         <br>
     </form>

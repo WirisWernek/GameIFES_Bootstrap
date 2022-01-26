@@ -11,11 +11,12 @@
 <body>
     <form action="../../../actions/update.php" method="post">
         <?php
-        require_once '../../../includes/db_connection.php';
-        $id = $_GET['id'];
+        require_once '../../../includes/classes/Conexao.php';
+        $conexao = Conexao::Conectar();
+        $id = $conexao->escape_string($_GET['id']);
         $sql = "SELECT * FROM categoriaatividade WHERE idcategoriaAtividade = $id";
-        $resultado = mysqli_query($connect, $sql);
-        $dados = mysqli_fetch_assoc($resultado);
+        $resultado = $conexao->query($sql);
+        $dados = $resultado->fetch_assoc();
         echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
         echo '<input type="hidden" name="opcao" value="atualizarCategoria">';
         echo '<label for="descricao">Descrição: </label>';

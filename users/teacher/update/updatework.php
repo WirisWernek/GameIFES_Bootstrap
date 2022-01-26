@@ -1,9 +1,10 @@
 <?php
-require_once '../../../includes/db_connection.php';
-$id = $_GET['id'];
+require_once '../../../includes/classes/Conexao.php';
+$conexao = Conexao::Conectar();
+$id = $conexao->escape_string($_GET['id']);
 $consulta = "SELECT * FROM atividade where idatividade = '$id'";
-$query = mysqli_query($connect, $consulta);
-$data = mysqli_fetch_assoc($query);
+$query = $conexao->query($consulta);
+$data = $query->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -26,10 +27,12 @@ $data = mysqli_fetch_assoc($query);
         <select name="categoria">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM categoriaatividade";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idcategoriaAtividade'] == $data['categoriaatividadeid']) {
                     echo '<option value="' . $dados['idcategoriaAtividade'] . '" selected ="selected">' . $dados['descricao'] . '</option>';
                 } else {
@@ -42,10 +45,12 @@ $data = mysqli_fetch_assoc($query);
         <select name="nivel">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM nivelatividade";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idnivelAtividade'] == $data['nivelatividadeid']) {
                     echo '<option value="' . $dados['idnivelAtividade'] . '" selected ="selected">' . $dados['descricaoNivel'] . '</option>';
                 } else {

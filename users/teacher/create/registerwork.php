@@ -18,10 +18,11 @@
         <select name="categoria">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM categoriaatividade";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo '<option value="' . $dados['idcategoriaAtividade'] . '">' . $dados['descricao'] . '</option>';
             }
             ?>
@@ -30,10 +31,11 @@
         <select name="nivel">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM nivelatividade";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo '<option value="' . $dados['idnivelAtividade'] . '">' . $dados['descricaoNivel'] . '</option>';
             }
             ?>

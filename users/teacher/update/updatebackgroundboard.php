@@ -1,8 +1,10 @@
 <?php
-require_once '../../../includes/db_connection.php';
-$id = mysqli_escape_string($connect, $_GET['id']);
+require_once '../../../includes/classes/Conexao.php';
+$conexao = Conexao::Conectar();
+$id = $conexao->escape_string($_GET['id']);
 $sql = "SELECT * FROM imagenstabuleiro WHERE idimagenstabuleiro = $id;";
-$data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
+$consulta = $conexao->query($sql);
+$data = $consulta->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,10 +26,11 @@ $data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
         <select name="tipo">
             <option value="">Selecione um valor</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM tipoimagem";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idtipoimagem'] == $data['tipoimagemid']) {
                     echo '<option value="' . $dados['idtipoimagem'] . '" selected ="selected">' . $dados['tipoimagem'] . '</option>';
                 } else {

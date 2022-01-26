@@ -18,10 +18,11 @@
         <select name="tipo" id="tipo">
             <option>Selecione um tipo</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM tipoimagem";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 echo "<option value='" . $dados['idtipoimagem'] . "'>" . $dados['tipoimagem'] . "</option>";
             }
             ?>

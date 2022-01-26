@@ -1,8 +1,10 @@
 <?php
-require_once '../../../includes/db_connection.php';
-$id = mysqli_escape_string($connect, $_GET['id']);
+require_once '../../../includes/classes/Conexao.php';
+$conexao = Conexao::Conectar();
+$id = $conexao->escape_string($_GET['id']);
 $sql = "SELECT * FROM tabuleiro_imagenstabuleiro WHERE idtabuleiro_imagenstabuleiro = $id;";
-$data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
+$resultado = $conexao->query($sql);
+$data = $resultado->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,10 +24,11 @@ $data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
         <select name="imagem">
             <option>Selecione uma imagem</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM imagenstabuleiro";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idimagenstabuleiro'] == $data['imagenstabuleiroID']) {
                     echo '<option value="' . $dados['idimagenstabuleiro'] . '" selected ="selected">' . $dados['urlImagem'] . '</option>';
                 } else {
@@ -38,10 +41,11 @@ $data = mysqli_fetch_assoc(mysqli_query($connect, $sql));
         <select name="tabuleiro">
             <option>Selecione um tabuleiro</option>
             <?php
-            require_once '../../../includes/db_connection.php';
+            require_once '../../../includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
             $sql = "SELECT * FROM tabuleiro";
-            $resultado = mysqli_query($connect, $sql);
-            while ($dados = mysqli_fetch_assoc($resultado)) {
+            $resultado = $conexao->query($sql);
+            while ($dados = $resultado->fetch_assoc()) {
                 if ($dados['idtabuleiro'] == $data['tabuleiroID']) {
                     echo '<option value="' . $dados['idtabuleiro'] . '" selected ="selected">' . $dados['descricao'] . '</option>';
                 } else {

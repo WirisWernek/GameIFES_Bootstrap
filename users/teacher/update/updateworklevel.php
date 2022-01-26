@@ -11,12 +11,12 @@
 <body>
     <form action="../../../actions/update.php" method="post">
         <?php
-        require_once '../../../includes/db_connection.php';
-
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM nivelatividade WHERE idnivelAtividade = $id";
-        $resultado = mysqli_query($connect, $sql);
-        $dados = mysqli_fetch_assoc($resultado);
+        require_once '../../../includes/classes/Conexao.php';
+        $conexao = Conexao::Conectar();
+        $id = $conexao->escape_string($_GET['id']);
+        $sql = "SELECT * FROM nivelatividade WHERE idnivelAtividade = '$id'";
+        $resultado = $conexao->query($sql);
+        $dados = $resultado->fetch_assoc();
 
         echo '<input type="hidden" name="id" value="' . $dados['idnivelAtividade'] . '">';
         echo '<input type="hidden" name="opcao" value="atualizarNivel">';

@@ -1,10 +1,3 @@
-<?php
-session_start();
-if ($_SESSION['tipo'] != '1') {
-    header('Location: ../../../index.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

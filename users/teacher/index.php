@@ -21,6 +21,7 @@
                 <a href="./list/listboard.php">Gerenciar Tabuleiros</a>
                 <a href="./list/listbackgroundboard.php">Gerenciar Imagens de Fundo</a>
                 <a href="./list/listimageboard.php">Gerenciar Imagens Tabuleiro</a>
+                <a href="../../login/historicoacesso.php?opcao=Logout">Logout</a>
             </nav>
         </div>
 

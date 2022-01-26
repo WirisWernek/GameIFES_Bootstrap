@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `softedu`.`usuario` (
   `login` VARCHAR(45) NOT NULL COMMENT '',
   `dataCadastro` DATE NOT NULL COMMENT '',
   `perfilUsuarioID` INT(11) NOT NULL COMMENT '',
+  `idhistoricoacessos` INT(11) NULL COMMENT '',
   PRIMARY KEY (`idusuario`)  COMMENT '')
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -183,6 +184,17 @@ DEFAULT CHARACTER SET = utf8;
 CREATE INDEX `tabuleiro_imagenstabuleiro_tabuleiro_idx` ON `softedu`.`tabuleiro_imagenstabuleiro` (`tabuleiroID` ASC)  COMMENT '';
 
 CREATE INDEX `tabuleiro_imagenstabuleiro_imgstabuleiro_idx` ON `softedu`.`tabuleiro_imagenstabuleiro` (`imagenstabuleiroID` ASC)  COMMENT '';
+
+-- -----------------------------------------------------
+-- Table `softedu`.`historicoacessos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `softedu`.`historicoacessos` ;
+
+CREATE TABLE `softedu`.`historicoacessos` (
+  `idhistoricoacessos` INT NOT NULL AUTO_INCREMENT,
+  `hora_data` DATETIME NOT NULL,
+  `tempoacesso` TIME NULL,
+  PRIMARY KEY (`idhistoricoacessos`));
 
 -- -----------------------------------------------------
 -- PROCEDURES 

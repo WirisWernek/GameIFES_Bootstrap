@@ -16,21 +16,21 @@ if (isset($_POST['btn-login'])) {
                     $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
                     $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
-                    header('Location: ../users/admin/index.php');
+                    header('Location: ./historicoacesso.php?opcao=Login');
                     break;
                 case '2':
                     $_SESSION['id'] = $dados['idusuario'];
                     $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
                     $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
-                    header('Location: ../users/teacher/index.php');
+                    header('Location: ./historicoacesso.php?opcao=Login');
                     break;
                 case '3':
                     $_SESSION['id'] = $dados['idusuario'];
                     $_SESSION['nome'] = $dados['nomeCompletoUsuario'];
                     $_SESSION['tipo'] = $dados['perfilUsuarioID'];
                     $_SESSION['mensagem'] = "Login efetuado com sucesso!";
-                    header('Location: ../users/user/home/index.php');
+                    header('Location: ./historicoacesso.php?opcao=Login');
                     break;
                 default:
                     $_SESSION['mensagem'] = "Falha na leitura dos dados!";

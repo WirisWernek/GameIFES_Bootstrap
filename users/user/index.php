@@ -14,6 +14,7 @@
         <h1>Atividades Em Andamento</h1>
         <a href="./initnewwork.php">Nova Atividade</a>
         <a href="./finishedwork.php">Atividades Finalizadas</a>
+        <a href="../../login/historicoacesso.php?opcao=Logout">Logout</a>
         <?php
         require_once '../../includes/classes/Conexao.php';
         require_once '../../includes/classes/Atividade_Aluno.php';

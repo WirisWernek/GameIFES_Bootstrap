@@ -23,6 +23,7 @@ if ($_SESSION['tipo'] != '1') {
             <nav>
                 <a href="#">Home</a>
                 <a href="./list/listusers.php">Gerenciar Usuários</a>
+                <a href="../../login/historicoacesso.php?opcao=Logout">Logout</a>
             </nav>
         </div>
     </header>

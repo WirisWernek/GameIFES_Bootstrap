@@ -61,8 +61,12 @@ function registeruser()
     $resultado = $usuario->Create($_POST['nome'], $_POST['login'], $_POST['senha'], $_POST['perfilusuario']);
 
     if ($resultado) {
+        $login = $_POST['login'];
+        $sql = "SELECT idusuario FROM usuario WHERE `login`='$login';";
+        $consulta = $conexao->query($sql);
+        $_SESSION['historico'] = intval($consulta->fetch_assoc());
         $_SESSION['mensagem'] = "Cadastrado com sucesso!";
-        header('Location: ../users/admin/list/listusers.php');
+        header('Location: ../login/historicoacesso.php?opcao=Create');
     } else {
         $_SESSION['mensagem'] = "Erro ao cadastrar!";
         echo $conexao->error;

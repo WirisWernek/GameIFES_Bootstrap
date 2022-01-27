@@ -48,9 +48,10 @@ class Usuario
         $this->nome = $this->conexao->escape_string($nome);
         $this->login =  $this->conexao->escape_string($login);
         $this->senha = $this->conexao->escape_string($senha);
+        $senha_criptografada = password_hash($this->senha, PASSWORD_DEFAULT);
         $this->perfilusuario =  intval($this->conexao->escape_string($perfilUsuario));
 
-        $sql = "INSERT INTO usuario(nomeCompletoUsuario, senha, `login`, dataCadastro, perfilUsuarioID) VALUES('$this->nome', '$this->senha', '$this->login', now(), '$this->perfilusuario');";
+        $sql = "INSERT INTO usuario(nomeCompletoUsuario, senha, `login`, dataCadastro, perfilUsuarioID) VALUES('$this->nome', '$senha_criptografada', '$this->login', now(), '$this->perfilusuario');";
 
         return $this->conexao->query($sql);
     }

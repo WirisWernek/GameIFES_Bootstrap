@@ -64,7 +64,8 @@ function registeruser()
         $login = $_POST['login'];
         $sql = "SELECT idusuario FROM usuario WHERE `login`='$login';";
         $consulta = $conexao->query($sql);
-        $_SESSION['historico'] = intval($consulta->fetch_assoc());
+        $id = $consulta->fetch_assoc();
+        $_SESSION['historico'] = intval($id['idusuario']);
         $_SESSION['mensagem'] = "Cadastrado com sucesso!";
         header('Location: ../login/historicoacesso.php?opcao=Create');
     } else {

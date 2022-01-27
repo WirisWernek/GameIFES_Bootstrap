@@ -28,8 +28,6 @@ $data = $query->fetch_assoc();
         <input type="text" name="nome" id="nome" placeholder="Nome" value="<?php echo $data['nomeCompletoUsuario'] ?>"><br>
         <label for="login">Login</label>
         <input type="text" name="login" id="login" placeholder="Nome De Usuário" value="<?php echo $data['login'] ?>"><br>
-        <label for="senha">Senha</label>
-        <input type="text" name="senha" id="senha" placeholder="Senha" value="<?php echo $data['senha'] ?>"><br>
         <label for="perfilusuario">Perfil do Usuário</label>
         <select name="perfilusuario" id="perfilusuario">
             <option value="">Selecione um valor</option>

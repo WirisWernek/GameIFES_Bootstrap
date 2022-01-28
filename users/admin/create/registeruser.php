@@ -25,6 +25,7 @@
             <?php
             require_once '../../../includes/classes/Conexao.php';
             $conexao = Conexao::Conectar();
+            echo "$conexao";
             $sql = "SELECT * FROM perfilusuario";
             $resultado = $conexao->query($sql);
             while ($dados = $resultado->fetch_assoc()) {

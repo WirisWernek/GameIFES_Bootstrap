@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    <br><a href="../create/registerbackgroundboard.php">Cadastrar Nova Imagem de Fundo</a>
-    <?php
-    require_once '../../../actions/list.php';
-    listbackgroundboard();
-    ?>
+    <main>
+        <br><a href="../create/registerbackgroundboard.php">Cadastrar Nova Imagem de Fundo</a>
+        <?php
+        require_once '../../../actions/list.php';
+        listbackgroundboard();
+        ?>
+    </main>
 </body>
 
 </html>

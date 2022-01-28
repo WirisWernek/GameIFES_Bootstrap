@@ -77,7 +77,7 @@ class Usuario
             $dataCadastro = new DateTime($dados['dataCadastro']);
             $dataLogin = new DateTime($dados['hora_data']);
             echo '<tr>';
-            echo '<form action="../../../actions/delete.php" method="post">';
+            echo '<form id="usertab" action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarUsuario">';
             echo '<input type="hidden" name="id" value="' . $dados['idusuario'] . '">';
             echo '<td>' . $dados['idusuario'] . '</td>';

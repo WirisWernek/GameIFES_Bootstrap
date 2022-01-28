@@ -10,11 +10,15 @@
 </head>
 
 <body>
-    <a href="../create/registeruser.php">Cadastrar Novo Usuário</a>
-    <?php
-    require_once '../../../actions/list.php';
-    listusers();
-    ?>
+    <main>
+        <br><a href="../create/registeruser.php">Cadastrar Novo Usuário</a>
+        <div class="listusers">
+            <?php
+            require_once '../../../actions/list.php';
+            listusers();
+            ?>
+        </div>
+    </main>
 
 </body>
 

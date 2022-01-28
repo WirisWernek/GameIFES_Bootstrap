@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    <br><a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
-    <?php
-    require_once '../../../actions/list.php';
-    listlevel();
-    ?>
+    <main>
+        <br><a href="../create/registerworklevel.php">Cadastrar Novo Nível</a>
+        <?php
+        require_once '../../../actions/list.php';
+        listlevel();
+        ?>
+    </main>
 
 </body>
 

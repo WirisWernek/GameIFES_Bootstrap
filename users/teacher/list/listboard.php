@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
-    <?php
-    require_once '../../../actions/list.php';
-    listboard();
-    ?>
+    <main>
+        <br><a href="../create/registerboard.php">Cadastrar Novo Tabuleiro</a>
+        <?php
+        require_once '../../../actions/list.php';
+        listboard();
+        ?>
+    </main>
 </body>
 
 </html>

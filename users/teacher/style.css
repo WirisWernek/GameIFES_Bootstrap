@@ -9,4 +9,5 @@ nav a:last-child{
     margin-right: 10px;
     display: flex;
     align-items: center;
+    padding: 1.1rem 0.4rem 1.1rem 0.4rem;
 }

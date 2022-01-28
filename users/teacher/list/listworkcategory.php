@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    <br><a href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
-    <?php
-    include_once '../../../actions/list.php';
-    listcategory();
-    ?>
+    <main>
+        <br><a href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
+        <?php
+        include_once '../../../actions/list.php';
+        listcategory();
+        ?>
+    </main>
 </body>
 
 </html>

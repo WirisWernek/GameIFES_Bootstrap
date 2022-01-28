@@ -30,6 +30,11 @@ fieldset{
 
 main {
     color: var(--cinza);
+    padding: 5px;
+}
+
+form {
+    color: var(--cinza);
     padding: 10px;
 }
 
@@ -99,23 +104,64 @@ nav {
 }
 
 nav a {
-    font-size: 16px;
+    font-size: 15px;
     display: inline-flex;
     text-align: center;
     margin: 5px;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    background-color: var(--cinza);
+    text-decoration: none;
+    color: #000000;
+    border-radius: 4px;
+    width: 130px;
+    height: 50px;
+}
+
+nav a:hover {
+    font-size: 15px;
+    background-color: var(--cinza);
+    color: rgb(62, 153, 126);
+    cursor: pointer;
+    box-shadow: 2px 3px 10px rgb(25, 208, 218);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[type="text"] {
+    border-radius: 6px;
+    border-color: transparent;
+}
+
+[type="submit"] {
+    border-color: transparent;
     background-color: var(--cinza);
     text-decoration: none;
     color: #000000;
     border-radius: 4px;
 }
 
-nav a:hover {
-    font-size: 16px;
+[type="submit"]:hover {
     background-color: var(--cinza);
     color: rgb(62, 153, 126);
     cursor: pointer;
     box-shadow: 2px 3px 10px rgb(25, 208, 218);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+select {
+    padding: 2px;
+    border-color: transparent;
+    background-color: var(--cinza);
+    text-decoration: none;
+    color: #000000;
+    border-radius: 4px;
+}
+
+select:active { 
+    background-color: var(--cinza);
+    color: rgb(62, 153, 126);
+    cursor: pointer;
+    box-shadow: 2px 3px 10px rgb(25, 208, 218);
+}
+
+div{
+    padding: 10px 0px 0px 0px;
 }
 

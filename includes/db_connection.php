@@ -1,8 +1,5 @@
 <?php
-$server = "127.0.0.1";
-$user = "root";
-$password = "jinjoe0067";
-$db = "softedu";
+require_once './env.php';
 $connect = mysqli_connect($server, $user, $password, $db);
 mysqli_set_charset($connect, "utf8");
 

@@ -1,0 +1,23 @@
+[id=login] {
+    margin:10px;
+    border-color: transparent;
+    border-radius: 3px;
+}
+
+[id=senha]{
+    margin: 5px;
+    border-color: transparent;
+    border-radius: 3px;
+}
+
+[id=nome] {
+    margin: 5px;
+    border-color: transparent;
+    border-radius: 3px;
+}
+
+[id=perfilusuario] {
+    margin: 5px;
+    border-color: transparent;
+    border-radius: 3px;
+}

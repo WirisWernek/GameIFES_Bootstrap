@@ -1,0 +1,22 @@
+[id="edit"] {
+    border-color: transparent;
+    background-color: var(--cinza);
+    text-decoration: none;
+    color: #000000;
+    border-radius: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+[id="edit"]:hover {
+    background-color: var(--cinza);
+    color: black;
+    cursor: pointer;
+    box-shadow: 2px 3px 10px rgb(25, 208, 218);
+}
+
+[id="cad"] {
+    margin: 5px 5px 10px 5px;
+    padding: 5px;
+    border-radius: 4px;
+}

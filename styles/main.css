@@ -36,21 +36,11 @@ main {
 form {
     color: var(--cinza);
     padding: 10px;
+    
 }
 
-
-[id=login] {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-color: transparent;
-    border-radius: 3px;
-}
-
-[id=senha]{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-color: transparent;
-    border-radius: 3px;
+table {
+    margin: 10px 10px 10px 5px;
 }
 
 [name="btn-login"] {
@@ -72,15 +62,16 @@ form {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 a {
     color: var(--preto);
     background-color: var(--cinza);
     text-decoration: none;
-    margin: 5px 5px 10px 5px;
-    padding: 5px;
+    margin: 5px;
+    padding: 5px 4px 5px 4px;
     border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 a:hover {
     background-color: var(--cinza);
@@ -89,6 +80,7 @@ a:hover {
     box-shadow: 5px 3px 10px rgb(25, 208, 218);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 nav {
     font-family: Arial, Helvetica, sans-serif;
@@ -132,11 +124,15 @@ nav a:hover {
 }
 
 [type="submit"] {
+    font-size: 15px;
     border-color: transparent;
     background-color: var(--cinza);
     text-decoration: none;
     color: #000000;
     border-radius: 4px;
+    padding: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 [type="submit"]:hover {
@@ -144,7 +140,16 @@ nav a:hover {
     color: rgb(62, 153, 126);
     cursor: pointer;
     box-shadow: 2px 3px 10px rgb(25, 208, 218);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+[type="number"] {
+    border-radius: 4px;
+    border-color: transparent;
+    background-color: var(--cinza);
+    text-decoration: none;
+}
+
 select {
     padding: 2px;
     border-color: transparent;

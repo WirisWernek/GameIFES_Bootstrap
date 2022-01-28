@@ -17,7 +17,7 @@
                 <form action="./login/login.php" method="post">
                     <h2>Login</h2>
                     <label for="login">Login</label><br>
-                    <input type="text" name="login" id="login" placeholder="Nome de Usuário" required><br>
+                    <input type="text" name="login" id="login" placeholder="Nome de Usuário" required><br><br>
                     <label for="senha">Senha</label><br>
                     <input type="password" name="senha" id="senha" placeholder="Senha" required><br>
                     <input type="submit" value="Entrar" name="btn-login"><br><br>

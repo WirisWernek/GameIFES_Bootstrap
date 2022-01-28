@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Novo Usuário</title>
 </head>
 
@@ -25,7 +26,6 @@
             <?php
             require_once '../../../includes/classes/Conexao.php';
             $conexao = Conexao::Conectar();
-            echo "$conexao";
             $sql = "SELECT * FROM perfilusuario";
             $resultado = $conexao->query($sql);
             while ($dados = $resultado->fetch_assoc()) {

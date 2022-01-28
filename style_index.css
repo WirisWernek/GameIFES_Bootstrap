@@ -3,3 +3,8 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+[id="senha"] {
+    border-radius: 5px;
+    border-color: transparent;
+}

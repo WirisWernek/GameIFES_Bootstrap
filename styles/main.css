@@ -36,7 +36,6 @@ main {
 form {
     color: var(--cinza);
     padding: 10px;
-    
 }
 
 table {
@@ -119,6 +118,7 @@ nav a:hover {
 }
 
 [type="text"] {
+    background-color: var(--cinza);
     border-radius: 6px;
     border-color: transparent;
 }

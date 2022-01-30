@@ -33,7 +33,7 @@ $dados = $resultado->fetch_assoc();
             <input type="hidden" name="descricao" value="<?php echo $dados['descricacao']; ?>">
 
             <h1>Selecione um Tabuleiro</h1>
-            <select name="tabuleiro" class="form-select  form-select-md mb-1">
+            <select name="tabuleiro" class="form-select form-select-md mb-1">
                 <option value="">Selecione um valor</option>
                 <?php
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Conexao.php';

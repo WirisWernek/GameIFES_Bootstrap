@@ -38,7 +38,7 @@ if ($option == "Login") {
     $id =  intval($conexao->escape_string($_SESSION['historico']));
     $sql = "UPDATE usuario SET idhistoricoacessos = $id WHERE idusuario=$id";
     $conexao->query($sql);
-    header('Location: ../users/admin/list/listusers.php');
+    header('Location: ../users/admin/index.php');
 } else {
     $_SESSION['mensagem'] = "Ocorreu um erro!";
     header('Location: ../index.php');

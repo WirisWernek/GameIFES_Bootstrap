@@ -61,7 +61,7 @@ function deleteuser()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Deletado com sucesso!";
-        header('Location: ../users/admin/list/listusers.php');
+        header('Location: ../users/admin/index.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao deletar!";
         echo $conexao->error;

@@ -61,7 +61,7 @@ function updateuser()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Atualizado com sucesso!";
-        header('Location: ../users/admin/list/listusers.php');
+        header('Location: ../users/admin/index.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao atualizar!";
         echo $conexao->error;

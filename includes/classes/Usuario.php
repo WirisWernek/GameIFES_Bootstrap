@@ -59,7 +59,7 @@ class Usuario
     {
         $sql = "call usuarios();";
         $resultado = $this->conexao->query($sql);
-        echo '<table>
+        echo '<table class="table table-striped table-hover table-bordered mt-2 text-center">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -77,7 +77,7 @@ class Usuario
             $dataCadastro = new DateTime($dados['dataCadastro']);
             $dataLogin = new DateTime($dados['hora_data']);
             echo '<tr>';
-            echo '<form id="usertab" action="../../../actions/delete.php" method="post">';
+            echo '<form id="usertab" action="/actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarUsuario">';
             echo '<input type="hidden" name="id" value="' . $dados['idusuario'] . '">';
             echo '<td>' . $dados['idusuario'] . '</td>';
@@ -85,10 +85,10 @@ class Usuario
             echo '<td>' . $dados['login'] . '</td>';
             echo '<td>' . $dados['descricao'] . '</td>';
             echo "<td>" . $dataCadastro->format('d/m/Y') . "</td>";
-            echo '<td>' . $dataLogin->format('d/m/Y') . '</td>';
+            echo '<td>' . $dataLogin->format('d/m/Y - H:i') . '</td>';
             echo '<td>' . $dados['tempoacesso'] . '</td>';
-            echo '<td><a href="../update/updateuser.php?id=' . $dados['idusuario'] . '" >Editar</a>';
-            echo '<td><button type="submit" >Excluir</button>';
+            echo '<td><a class="btn btn-primary" href="./update/updateuser.php?id=' . $dados['idusuario'] . '" >Editar</a>';
+            echo '<td><button type="submit" class="btn btn-danger" >Excluir</button>';
             echo '</form>';
             echo '</tr>';
         }
@@ -98,7 +98,6 @@ class Usuario
 
     public function Update($id, $nome, $login, $senha, $perfilUsuario)
     {
-
         $this->id = intval($this->conexao->escape_string($id));
         $this->nome = $this->conexao->escape_string($nome);
         $this->login =  $this->conexao->escape_string($login);

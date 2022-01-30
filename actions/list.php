@@ -25,8 +25,8 @@ function listwork()
 
 function listusers()
 {
-    require_once('../../../includes/classes/Conexao.php');
-    require_once('../../../includes/classes/Usuario.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Conexao.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Usuario.php');
     $usuario = new Usuario();
     $usuario->Read();
 }

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../../includes/classes/Conexao.php';
-require_once '../../includes/classes/Atividade_Aluno.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Atividade_Aluno.php';
 $atividades = new AtividadeAluno();
 $conexao = $atividades->getConexao();
 $resultado = $atividades->Delete($_GET['id']);

@@ -12,10 +12,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                     <a class="nav-link" href="../index.php">Home</a>
                     <a class="nav-link" href="../list/listwork.php">Gerenciar Atividades</a>
                     <a class="nav-link" href="../list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
-                    <a class="nav-link active" aria-current="page" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
+                    <a class="nav-link" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
                     <a class="nav-link" href="../list/listboard.php">Gerenciar Tabuleiros</a>
                     <a class="nav-link" href="../list/listbackgroundboard.php">Gerenciar Fundo Tabuleiro</a>
-                    <a class="nav-link" href="../list/listimages.php">Gerenciar Imagens</a>
+                    <a class="nav-link active" aria-current="page" href="../list/listimages.php">Gerenciar Imagens</a>
                     <a class="nav-link" href="../../../login/historicoacesso.php?opcao=Logout">Logout</a>
                 </div>
             </div>
@@ -24,14 +24,26 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 </header>
 <main>
     <div class="container">
-        <h2>Categorias</h2>
-        <main>
-            <a class="btn btn-success" href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
-            <?php
-            include_once '../../../actions/list.php';
-            listcategory();
-            ?>
-            <hr>
+        <h2>Nova Imagem</h2>
+        <form action="../../../actions/create.php" method="post">
+            <input type="hidden" name="opcao" value="criarImagem">
+            <label class="form-label mt-2" for="url">URL: </label>
+            <input class="form-control mb-1" type="text" name="url" id="url">
+            <label class="form-label mt-2" for="tipo">Tipo: </label>
+            <select class="form-select form-select-md mb-1" name="tipo" id="tipo">
+                <option>Selecione um tipo</option>
+                <?php
+                require_once '../../../includes/classes/Conexao.php';
+                $conexao = Conexao::Conectar();
+                $sql = "SELECT * FROM tipoimagem";
+                $resultado = $conexao->query($sql);
+                while ($dados = $resultado->fetch_assoc()) {
+                    echo "<option value='" . $dados['idtipoimagem'] . "'>" . $dados['tipoimagem'] . "</option>";
+                }
+                ?>
+            </select>
+            <input class="btn btn-primary" type="submit" value="Cadastrar">
+        </form>
     </div>
 </main>
 <?php

@@ -83,7 +83,7 @@ function deleteboard()
         echo $conexao->error;
     }
 }
-function deletebackgroundboard()
+function deleteimage()
 {
     include_once '../includes/classes/Conexao.php';
     include_once '../includes/classes/Imagem_Tabuleiro.php';
@@ -93,13 +93,13 @@ function deletebackgroundboard()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Deletado com sucesso!";
-        header('Location: ../users/teacher/list/listbackgroundboard.php');
+        header('Location: ../users/teacher/list/listimages.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao deletar!";
         echo $conexao->error;
     }
 }
-function deleteimageboard()
+function deletebackgroundboard()
 {
     include_once '../includes/classes/Conexao.php';
     include_once '../includes/classes/Imagem_Tabuleiro_Imagem.php';
@@ -109,7 +109,7 @@ function deleteimageboard()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Deletado com sucesso!";
-        header('Location: ../users/teacher/list/listimageboard.php');
+        header('Location: ../users/teacher/list/listbackgroundboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao deletar!";
         echo $conexao->error;
@@ -135,8 +135,8 @@ switch ($_POST['opcao']) {
     case 'deletarFundoTabuleiro':
         deletebackgroundboard();
         break;
-    case 'deletarImagemTabuleiro':
-        deleteimageboard();
+    case 'deletarImagem':
+        deleteimage();
         break;
     default:
         echo "Não foi possível realizar a operação!";

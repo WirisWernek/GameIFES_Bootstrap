@@ -1,30 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Categoria de Atividade</title>
-</head>
-
-<body>
-    <form action="../../../actions/update.php" method="post">
-        <?php
-        require_once '../../../includes/classes/Conexao.php';
-        $conexao = Conexao::Conectar();
-        $id = $conexao->escape_string($_GET['id']);
-        $sql = "SELECT * FROM categoriaatividade WHERE idcategoriaAtividade = $id";
-        $resultado = $conexao->query($sql);
-        $dados = $resultado->fetch_assoc();
-        echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
-        echo '<input type="hidden" name="opcao" value="atualizarCategoria">';
-        echo '<label for="descricao">Descrição: </label>';
-        echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '">';
-        echo '<input type="submit" value="Editar" >';
-
-        ?>
-    </form>
-</body>
-
-</html>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+?>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../index.php">Home</a>
+                    <a class="nav-link" href="../list/listwork.php">Gerenciar Atividades</a>
+                    <a class="nav-link" href="../list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
+                    <a class="nav-link active" aria-current="page" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
+                    <a class="nav-link" href="../list/listboard.php">Gerenciar Tabuleiros</a>
+                    <a class="nav-link" href="../list/listbackgroundboard.php">Gerenciar Fundo Tabuleiro</a>
+                    <a class="nav-link" href="../list/listimages.php">Gerenciar Imagens</a>
+                    <a class="nav-link" href="../../../login/historicoacesso.php?opcao=Logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <h2>Atualizar Categoria</h2>
+        <form action="../../../actions/update.php" method="post">
+            <?php
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/classes/Conexao.php';
+            $conexao = Conexao::Conectar();
+            $id = $conexao->escape_string($_GET['id']);
+            $sql = "SELECT * FROM categoriaatividade WHERE idcategoriaAtividade = $id";
+            $resultado = $conexao->query($sql);
+            $dados = $resultado->fetch_assoc();
+            echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
+            echo '<input type="hidden" name="opcao" value="atualizarCategoria">';
+            echo '<label class="form-label mt-2" for="descricao">Descrição: </label>';
+            echo '<input class="form-control mb-1" type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '">';
+            echo '<input class="btn btn-primary" type="submit" value="Editar" >';
+            ?>
+        </form>
+    </div>
+</main>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php';
+?>

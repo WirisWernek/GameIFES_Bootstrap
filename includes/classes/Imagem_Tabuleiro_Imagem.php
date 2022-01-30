@@ -48,17 +48,18 @@ class ImagemTabuleiroImagem
         $sql = "call tabuleiro_imagem();";
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
+            echo '<hr>';
             echo '<form action="../../../actions/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarImagemTabuleiro">';
+            echo '<input type="hidden" name="opcao" value="deletarFundoTabuleiro">';
             echo '<input type="hidden" name="id" value="' . $dados['ID'] . '">';
-            echo '<label for="imagem">Imagem: </label>';
-            echo '<input type="text" name="imagem" id="imagem" value="' . $dados['Imagem'] . '" disabled>';
-            echo '<label for="posicao">Posição: </label>';
-            echo '<input type="number" name="posicao" id="posicao" value="' . $dados['Posicao'] . '" disabled>';
-            echo '<label for="tabuleiro">Tabuleiro: </label>';
-            echo '<input type="text" name="tabuleiro" id="tabuleiro" value="' . $dados['Tabuleiro'] . '" disabled>';
-            echo '<a href="../update/updateimageboard.php?id=' . $dados['ID'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
+            echo '<label class="form-label mt-1" for="imagem">Imagem: </label>';
+            echo '<input class="form-control mb-1" type="text" name="imagem" id="imagem" value="' . $dados['Imagem'] . '" disabled>';
+            echo '<label class="form-label mt-1" for="posicao">Posição: </label>';
+            echo '<input class="form-control mb-1" type="number" name="posicao" id="posicao" value="' . $dados['Posicao'] . '" disabled>';
+            echo '<label class="form-label mt-1" for="tabuleiro">Tabuleiro: </label>';
+            echo '<input class="form-control mb-1" type="text" name="tabuleiro" id="tabuleiro" value="' . $dados['Tabuleiro'] . '" disabled>';
+            echo '<a class="btn btn-primary me-1" href="../update/updatebackgroundboard.php?id=' . $dados['ID'] . '" >Editar</a>';
+            echo '<button class="btn btn-danger" type="submit">Excluir</button>';
             echo '<br>';
             echo '</form>';
         }

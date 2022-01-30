@@ -12,10 +12,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                     <a class="nav-link" href="../index.php">Home</a>
                     <a class="nav-link" href="../list/listwork.php">Gerenciar Atividades</a>
                     <a class="nav-link" href="../list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
-                    <a class="nav-link active" aria-current="page" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
+                    <a class="nav-link" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
                     <a class="nav-link" href="../list/listboard.php">Gerenciar Tabuleiros</a>
                     <a class="nav-link" href="../list/listbackgroundboard.php">Gerenciar Fundo Tabuleiro</a>
-                    <a class="nav-link" href="../list/listimages.php">Gerenciar Imagens</a>
+                    <a class="nav-link active" aria-current="page" href="../list/listimages.php">Gerenciar Imagens</a>
                     <a class="nav-link" href="../../../login/historicoacesso.php?opcao=Logout">Logout</a>
                 </div>
             </div>
@@ -24,12 +24,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 </header>
 <main>
     <div class="container">
-        <h2>Categorias</h2>
+        <h2>Imagens</h2>
         <main>
-            <a class="btn btn-success" href="../create/registerworkcategory.php">Cadastrar Nova Categoria</a>
+            <a class="btn btn-success" href="../create/registerimage.php">Cadastrar Nova Imagem</a>
             <?php
-            include_once '../../../actions/list.php';
-            listcategory();
+            require_once '../../../actions/list.php';
+            listimages();
             ?>
             <hr>
     </div>

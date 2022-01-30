@@ -1,23 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <title>Registrar Tabuleiro</title>
-</head>
-
-<body>
-    <form action="../../../actions/create.php" method="post">
-        <input type="hidden" name="opcao" value="criarTabuleiro">
-        <label for="planta">Planta</label>
-        <input type="text" name="planta" id="planta">
-        <label for="descricao">Descrição: </label>
-        <input type="text" name="descricao" id="descricao">
-        <input type="submit" value="Cadastrar">
-    </form>
-</body>
-
-</html>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+?>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../index.php">Home</a>
+                    <a class="nav-link" href="../list/listwork.php">Gerenciar Atividades</a>
+                    <a class="nav-link" href="../list/listworklevel.php">Gerenciar Nivel Das Atividades</a>
+                    <a class="nav-link" href="../list/listworkcategory.php">Gerenciar Categoria Das Atividades</a>
+                    <a class="nav-link active" aria-current="page" href="../list/listboard.php">Gerenciar Tabuleiros</a>
+                    <a class="nav-link" href="../list/listbackgroundboard.php">Gerenciar Fundo Tabuleiro</a>
+                    <a class="nav-link" href="../list/listimages.php">Gerenciar Imagens</a>
+                    <a class="nav-link" href="../../../login/historicoacesso.php?opcao=Logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <h2>Novo Tabuleiro</h2>
+        <form action="../../../actions/create.php" method="post">
+            <input type="hidden" name="opcao" value="criarTabuleiro">
+            <label class="form-label mt-2" for="planta">Planta</label>
+            <input class="form-control mb-1" type="text" name="planta" id="planta">
+            <label class="form-label mt-2" for="descricao">Descrição: </label>
+            <input class="form-control mb-1" type="text" name="descricao" id="descricao">
+            <input class="btn btn-primary" type="submit" value="Cadastrar">
+        </form>
+    </div>
+</main>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php';
+?>

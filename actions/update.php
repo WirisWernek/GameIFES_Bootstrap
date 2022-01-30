@@ -83,7 +83,7 @@ function updateboard()
         echo $conexao->error;
     }
 }
-function updatebackgroundboard()
+function updateimage()
 {
     require_once('../includes/classes/Conexao.php');
     require_once('../includes/classes/Imagem_Tabuleiro.php');
@@ -92,13 +92,13 @@ function updatebackgroundboard()
     $resultado = $imagem->Update($_POST['id'], $_POST['url'], $_POST['tipo']);
     if ($resultado) {
         $_SESSION['mensagem'] = "Atualizado com sucesso!";
-        header('Location: ../users/teacher/list/listbackgroundboard.php');
+        header('Location: ../users/teacher/list/listimages.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao atualizar!";
         echo $conexao->error;
     }
 }
-function updateimageboard()
+function updatebackgroundboard()
 {
     require_once('../includes/classes/Conexao.php');
     require_once('../includes/classes/Imagem_Tabuleiro_Imagem.php');
@@ -107,7 +107,7 @@ function updateimageboard()
     $resultado = $imagemTabuleiro->Update($_POST['id'], $_POST['imagem'], $_POST['tabuleiro'],  $_POST['posicao']);
     if ($resultado) {
         $_SESSION['mensagem'] = "Atualizado com sucesso!";
-        header('Location: ../users/teacher/list/listimageboard.php');
+        header('Location: ../users/teacher/list/listbackgroundboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao atualizar!";
         echo $conexao->error;
@@ -133,8 +133,8 @@ switch ($_POST['opcao']) {
     case 'atualizarFundoTabuleiro':
         updatebackgroundboard();
         break;
-    case 'atualizarImagemTabuleiro':
-        updateimageboard();
+    case 'atualizarImagem':
+        updateimage();
         break;
     default:
         echo "Não foi possível realizar a operação!";

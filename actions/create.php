@@ -107,7 +107,7 @@ function initializework()
     }
 }
 
-function registerbackgroundboard()
+function registerimage()
 {
     require_once('../includes/classes/Conexao.php');
     require_once('../includes/classes/Imagem_Tabuleiro.php');
@@ -117,13 +117,13 @@ function registerbackgroundboard()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Cadastrado com sucesso!";
-        header('Location: ../users/teacher/list/listbackgroundboard.php');
+        header('Location: ../users/teacher/list/listimages.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao cadastrar!";
         echo $conexao->error;
     }
 }
-function registerimageboard()
+function registerbackgroundboard()
 {
     require_once('../includes/classes/Conexao.php');
     require_once('../includes/classes/Imagem_Tabuleiro_Imagem.php');
@@ -133,7 +133,7 @@ function registerimageboard()
 
     if ($resultado) {
         $_SESSION['mensagem'] = "Cadastrado com sucesso!";
-        header('Location: ../users/teacher/list/listimageboard.php');
+        header('Location: ../users/teacher/list/listbackgroundboard.php');
     } else {
         $_SESSION['mensagem'] = "Erro ao cadastrar!";
         echo $conexao->error;
@@ -162,8 +162,8 @@ switch ($_POST['opcao']) {
     case 'criarFundoTabuleiro':
         registerbackgroundboard();
         break;
-    case 'criarImagemTabuleiro':
-        registerimageboard();
+    case 'criarImagem':
+        registerimage();
         break;
     default:
         echo "Não foi possível realizar a operação!";

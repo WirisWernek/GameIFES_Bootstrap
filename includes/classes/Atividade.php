@@ -63,17 +63,18 @@ class Atividade
         $sql = "call atividade();";
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
+            echo '<hr>';
             echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarAtividade">';
             echo '<input type="hidden" name="id" value="' . $dados['IdAtividade'] . '">';
-            echo '<label for="descricao">Descrição: </label>';
-            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['Descricao'] . '" disabled>';
-            echo '<label for="categoria">Categoria: </label>';
-            echo '<input type="text" name="categoria" id="categoria" value="' . $dados['Categoria'] . '" disabled>';
-            echo '<label for="nivel">Nível: </label>';
-            echo '<input type="text" name="nivel" id="nivel" value="' . $dados['Nivel'] . '" disabled>';
-            echo '<a href="../update/updatework.php?id=' . $dados['IdAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
+            echo '<label class="form-label mt-1" for="descricao">Descrição: </label>';
+            echo '<input class="form-control mb-1"type="text" name="descricao" id="descricao" value="' . $dados['Descricao'] . '" disabled>';
+            echo '<label class="form-label mt-1" for="categoria">Categoria: </label>';
+            echo '<input class="form-control mb-1"type="text" name="categoria" id="categoria" value="' . $dados['Categoria'] . '" disabled>';
+            echo '<label class="form-label mt-1" for="nivel">Nível: </label>';
+            echo '<input class="form-control mb-1"type="text" name="nivel" id="nivel" value="' . $dados['Nivel'] . '" disabled>';
+            echo '<a class="btn btn-primary me-1" href="../update/updatework.php?id=' . $dados['IdAtividade'] . '" >Editar</a>';
+            echo '<button class="btn btn-danger" type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }

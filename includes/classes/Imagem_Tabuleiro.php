@@ -42,15 +42,16 @@ class ImagemTabuleiro
         $sql = "call imagensTabuleiro();";
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
+            echo '<hr>';
             echo '<form action="../../../actions/delete.php" method="post">';
-            echo '<input type="hidden" name="opcao" value="deletarFundoTabuleiro">';
+            echo '<input type="hidden" name="opcao" value="deletarImagem">';
             echo '<input type="hidden" name="id" value="' . $dados['ID'] . '">';
-            echo '<label for="url">URL: </label>';
-            echo '<input type="text" name="url" id="url" value="' . $dados['URL'] . '" disabled>';
-            echo '<label for="tipo">Tipo de Imagem: </label>';
-            echo '<input type="text" name="tipo" id="tipo" value="' . $dados['Tipo'] . '" disabled>';
-            echo '<a href="../update/updatebackgroundboard.php?id=' . $dados['ID'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
+            echo '<label class="form-label mt-1" for="url">URL: </label>';
+            echo '<input class="form-control mb-1" type="text" name="url" id="url" value="' . $dados['URL'] . '" disabled>';
+            echo '<label class="form-label mt-1" for="tipo">Tipo de Imagem: </label>';
+            echo '<input class="form-control mb-1" type="text" name="tipo" id="tipo" value="' . $dados['Tipo'] . '" disabled>';
+            echo '<a class="btn btn-primary me-1" href="../update/updateimage.php?id=' . $dados['ID'] . '" >Editar</a>';
+            echo '<button class="btn btn-danger" type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }

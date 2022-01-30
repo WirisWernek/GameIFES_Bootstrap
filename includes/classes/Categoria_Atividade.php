@@ -43,13 +43,14 @@ class CategoriaAtividade
         $sql = "SELECT * FROM categoriaatividade";
         $resultado = $this->conexao->query($sql);
         while ($dados = $resultado->fetch_assoc()) {
+            echo '<hr>';
             echo '<form action="../../../actions/delete.php" method="post">';
             echo '<input type="hidden" name="opcao" value="deletarCategoria">';
             echo '<input type="hidden" name="id" value="' . $dados['idcategoriaAtividade'] . '">';
-            echo '<label for="descricao">Descrição: </label>';
-            echo '<input type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
-            echo '<a href="../update/updateworkcategory.php?id=' . $dados['idcategoriaAtividade'] . '" >Editar</a>';
-            echo '<button type="submit" >Excluir</button>';
+            echo '<label class="form-label mt-1" for="descricao">Descrição: </label>';
+            echo '<input class="form-control mb-1" type="text" name="descricao" id="descricao" value="' . $dados['descricao'] . '" disabled>';
+            echo '<a class="btn btn-primary me-1" href="../update/updateworkcategory.php?id=' . $dados['idcategoriaAtividade'] . '" >Editar</a>';
+            echo '<button class="btn btn-danger" type="submit" >Excluir</button>';
             echo '<br>';
             echo '</form>';
         }

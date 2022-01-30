@@ -39,14 +39,14 @@ function listboard()
     $tabuleiro->Read();
 }
 
-function listbackgroundboard()
+function listimages()
 {
     require_once('../../../includes/classes/Conexao.php');
     require_once('../../../includes/classes/Imagem_Tabuleiro.php');
     $imagem = new ImagemTabuleiro();
     $imagem->Read();
 }
-function  listimageboard()
+function listbackgroundboard()
 {
     require_once('../../../includes/classes/Conexao.php');
     require_once('../../../includes/classes/Imagem_Tabuleiro_Imagem.php');

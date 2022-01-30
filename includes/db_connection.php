@@ -1,5 +1,6 @@
 <?php
-require_once './env.php';
+$diretorio = $_SERVER['DOCUMENT_ROOT'] . '/includes/env.php';
+include_once $diretorio;
 $connect = mysqli_connect($server, $user, $password, $db);
 mysqli_set_charset($connect, "utf8");
 

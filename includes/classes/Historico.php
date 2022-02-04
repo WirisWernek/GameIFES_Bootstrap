@@ -14,7 +14,7 @@ class Historico
     public function Create($id)
     {
         $this->id = intval($this->conexao->escape_string($id));
-        $sql = "INSERT INTO historicoacessos(idhistoricoacessos, hora_data) VALUES('$this->id', now())";
+        $sql = "INSERT INTO historicoacessos(idhistoricoacessos, hora_data, tempoacesso) VALUES('$this->id', now(), 0)";
         return $this->conexao->query($sql);
     }
     public function Login($id)

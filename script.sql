@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `softedu`.`atividade_aluno` (
   `status` VARCHAR(45) NULL COMMENT '',
   `datainicio` DATETIME NULL COMMENT '',
   `datafim` DATETIME NULL COMMENT '',
-  `atividadeid` INT NULL COMMENT '',
+  `atividadeid` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idatividade_aluno`)  COMMENT '')
 ENGINE = InnoDB;
 
@@ -193,7 +193,7 @@ DROP TABLE IF EXISTS `softedu`.`historicoacessos` ;
 CREATE TABLE `softedu`.`historicoacessos` (
   `idhistoricoacessos` INT NOT NULL,
   `hora_data` DATETIME NOT NULL,
-  `tempoacesso` TIME NULL,
+  `tempoacesso` TIME NOT NULL,
   PRIMARY KEY (`idhistoricoacessos`));
 
 -- -----------------------------------------------------
@@ -205,8 +205,8 @@ CREATE PROCEDURE atividade()
 begin
 		select atividade.idatividade as IdAtividade,
         atividade.descricacao as Descricao,
-		nivel.descricaoNivel as Nivel,
-		categoria.descricao as Categoria
+		    nivel.descricaoNivel as Nivel,
+		    categoria.descricao as Categoria
         from atividade inner join nivelatividade nivel
         on atividade.nivelatividadeid = nivel.idnivelAtividade
         inner join categoriaatividade categoria on atividade.categoriaatividadeid = categoria.idcategoriaAtividade;
@@ -271,14 +271,15 @@ begin
 $$
 
 DELIMITER $$
-create procedure set_tempo_acesso(
-in id int)
+CREATE PROCEDURE set_tempo_acesso(
+in id int,
+in fim datetime)
 begin 
-	SELECT @inicio := hora_data, @final := hora_data_final
+	SELECT @inicio := hora_data
 	FROM historicoacessos
 	WHERE idhistoricoacessos=id;
 
-	SELECT @diferenca := timediff(@final, @inicio);
+	SELECT @diferenca := timediff(fim, @inicio);
 	UPDATE historicoacessos SET tempoacesso=@diferenca WHERE idhistoricoacessos=id;
 
 end
@@ -310,3 +311,80 @@ $$
 -- call tabuleiro_imagem();
 -- call set_tempo_acesso(1);
 -- call usuarios();
+
+-- -----------------------------------------------------
+-- FOREIGN KEY 
+-- -----------------------------------------------------
+ALTER TABLE `softedu`.`atividade` 
+ADD CONSTRAINT `fk_categoria_atividade`
+  FOREIGN KEY (`categoriaatividadeid`)
+  REFERENCES `softedu`.`categoriaatividade` (`idcategoriaAtividade`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_nivel_atividade`
+  FOREIGN KEY (`nivelatividadeid`)
+  REFERENCES `softedu`.`nivelatividade` (`idnivelAtividade`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  ALTER TABLE `softedu`.`imagenstabuleiro` 
+ADD CONSTRAINT `fk_tipo_imagenstabuleiro`
+  FOREIGN KEY (`tipoimagemid`)
+  REFERENCES `softedu`.`tipoimagem` (`idtipoimagem`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  ALTER TABLE `softedu`.`usuario` 
+CHANGE COLUMN `idhistoricoacessos` `idhistoricoacessos` INT NULL ,
+ADD INDEX `fk_historicoacesso_usuario_idx` (`idhistoricoacessos` ASC) VISIBLE;
+;
+ALTER TABLE `softedu`.`usuario` 
+ADD CONSTRAINT `fk_perfil_usuario`
+  FOREIGN KEY (`perfilUsuarioID`)
+  REFERENCES `softedu`.`perfilusuario` (`idPerfilUsuario`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_historicoacesso_usuario`
+  FOREIGN KEY (`idhistoricoacessos`)
+  REFERENCES `softedu`.`historicoacessos` (`idhistoricoacessos`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  ALTER TABLE `softedu`.`tabuleiro` 
+ADD INDEX `fk_usuario_tabuleiro_idx` (`usuario` ASC) VISIBLE;
+;
+ALTER TABLE `softedu`.`tabuleiro` 
+ADD CONSTRAINT `fk_usuario_tabuleiro`
+  FOREIGN KEY (`usuario`)
+  REFERENCES `softedu`.`usuario` (`idusuario`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  ALTER TABLE `softedu`.`tabuleiro_imagenstabuleiro` 
+ADD CONSTRAINT `fk_tabuleiroid_tabuleiro_imagenstabuleiro`
+  FOREIGN KEY (`tabuleiroID`)
+  REFERENCES `softedu`.`tabuleiro` (`idtabuleiro`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_imagemid_tabuleiro_imagenstabuleiro`
+  FOREIGN KEY (`imagenstabuleiroID`)
+  REFERENCES `softedu`.`imagenstabuleiro` (`idimagenstabuleiro`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `softedu`.`atividade_aluno` 
+ADD CONSTRAINT `fk_tabuleiro_atividade_aluno`
+  FOREIGN KEY (`tabuleiroid`)
+  REFERENCES `softedu`.`tabuleiro` (`idtabuleiro`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_usuario_atividade_aluno`
+  FOREIGN KEY (`usuarioid`)
+  REFERENCES `softedu`.`usuario` (`idusuario`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_atividade_atividade_aluno`
+  FOREIGN KEY (`atividadeid`)
+  REFERENCES `softedu`.`atividade` (`idatividade`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

@@ -1,7 +1,7 @@
 <?php
 // $diretorio = $_SERVER['DOCUMENT_ROOT'] . '/includes/env.php';
 // include_once $diretorio;
-$connect = mysqli_connect("us-cdbr-east-05.cleardb.net", "b85cc0b2613008", "595391d3", "heroku_61081410bf8af24");
+$connect = mysqli_connect(getenv('HOST'), getenv('USER'), getenv('PASSWORD'), getenv('DATABASE'));
 mysqli_set_charset($connect, "utf8");
 
 if (mysqli_connect_error()) {
